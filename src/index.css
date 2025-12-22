@@ -1,0 +1,435 @@
+@import "tailwindcss";
+
+/* ============================= */
+/* Base layer (fonts, defaults) */
+/* ============================= */
+@layer base {
+  @font-face {
+    font-family: "Stem-Medium";
+    src: url("/src/assets/fonts/Stem-Medium.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* Stem Light Italic */
+    @font-face {
+    font-family: "Stem-LightItalic";
+    src: url("./assets/fonts/Stem-LightItalic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+    }
+    @font-face {
+    font-family: "Stem-Regular";
+    src: url("./assets/fonts/Stem\ Text\ W03\ Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    }
+}
+
+/* ============================= */
+/* Tailwind v4 Theme Tokens     */
+/* ============================= */
+@theme {
+  /* Fonts */
+  --font-stem: "Stem-Medium", sans-serif;
+  --font-stem-lightitalic: "Stem-LightItalic", sans-serif;
+  --font-stem-regular: "Stem-Regular", sans-serif;
+
+  /* Colors */
+  --color-nav-muted: #00000066;
+  --color-nav-border: #0000004D;
+  --color-accent: #95BF1F;
+  --color-search-icon: #AFAFAF;
+  --color-search-placeholder: #00000066;
+
+  /* Easing */
+  --ease-smooth: cubic-bezier(0.3, 0, 0, 1);
+
+  /* Sizes */
+  --radius-lg: 20px;
+}
+
+/* ============================= */
+/* Component classes (REUSABLE) */
+/* ============================= */
+@layer components {
+
+  /* ---------- NAVBAR ---------- */
+  .navbar-shell {
+    @apply
+      w-420 h-[108.65px]
+      flex items-center
+      px-8 mx-auto
+      mt-[31.48px]
+      bg-transparent
+    ;
+    
+  }
+
+  .navbar-logo {
+    @apply
+      w-29.5 h-[108.65px]
+      flex items-center;
+    
+  }
+
+  .navbar-links {
+    @apply flex gap-10 ml-36;
+  }
+
+  .navbar-right {
+    @apply ml-auto flex items-center gap-6;
+  }
+
+  .navbar-separator {
+    @apply h-7.5 border-l;
+    border-color: var(--color-nav-border);
+  }
+
+  /* ---------- NAV LINKS ---------- */
+  .nav-link {
+    @apply
+      text-[20px]
+      leading-[106%]
+      transition-colors;
+    font-family: var(--font-stem);
+    color: var(--color-nav-muted);
+  }
+
+  .nav-link-active {
+    color: var(--color-accent);
+  }
+
+  .container-fixed {
+    @apply mx-auto;
+    max-width: 1680px; 
+    padding-left: 32px; 
+    padding-right: 32px;
+  }
+
+  .text-accent-italic {
+    @apply italic;
+    font-family: var(--font-stem-lightitalic);
+    font-weight: 400;
+    color: var(--color-accent);
+  }
+
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    @apply
+      inline-flex items-center justify-center
+      transition-all
+      duration-1250;
+    font-family: var(--font-stem);
+    ease: var(--ease-smooth);
+  }
+
+  .btn-primary {
+    @apply
+      w-46.5 h-16.25
+      text-white
+      bg-black
+      hover:opacity-80;
+    border-radius: var(--radius-lg);
+    font-size: 20px;
+    line-height: 106%;
+  }
+
+  .tag {
+  @apply absolute flex items-center justify-center rounded-[10px] text-white text-[18px];
+  width: 104px;
+  height: 37px;
+  top: 23px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+  font-family: var(--font-stem);
+}
+
+/* ---------- SECTION HEADERS ---------- */
+.section-header {
+  @apply text-center;
+}
+
+.section-title {
+  @apply text-[70px] leading-[74px];
+  font-family: var(--font-stem);
+  font-weight: 600;
+  color: currentColor;
+}
+
+.section-title-accent {
+  @apply italic;
+  font-family: var(--font-stem-lightitalic);
+  font-weight: 400;
+  color: var(--color-accent);
+}
+
+.section-description {
+  @apply mt-6 text-[25px] leading-[100%];
+  font-family: var(--font-stem-regular);
+  font-weight: 400;
+  color: currentColor;
+  opacity: 0.6;
+}
+
+/* Base Pill/Card */
+.pill-base {
+  @apply flex items-center justify-center cursor-pointer transition-all duration-300;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Service Category Box */
+.service-category-box {
+  @apply flex items-center justify-center cursor-pointer transition-all duration-300 flex-col rounded-[30px] w-[160px] h-[160px];
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+.service-category-box-active { 
+  @apply bg-white; 
+}
+
+.service-category-text { 
+  @apply text-center text-[16px] leading-[120%] font-medium text-white; 
+  font-family: var(--font-stem); 
+}
+.service-category-text-active { 
+  color: #000000; 
+}
+
+/* Subcategory*/
+.subcategory-pill {
+  @apply flex items-center justify-center cursor-pointer transition-all duration-300 gap-3 px-6 py-3 rounded-full inline-flex;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+.subcategory-pill-active { 
+  @apply bg-white; 
+}
+
+.subcategory-pill-text {
+  @apply text-[18px] leading-[120%] text-white;
+  font-family: var(--font-stem);
+}
+.subcategory-pill-text-active { 
+  color: #000000; 
+}
+
+  /* Service Cards Section */
+  .services-cards-title {
+    @apply text-[70px] leading-[74px];
+    font-family: var(--font-stem);
+    font-weight: 400;
+    color: white;
+  }
+
+  .services-cards-title-accent {
+    @apply italic;
+    font-family: var(--font-stem-lightitalic);
+    color: var(--color-accent);
+  }
+
+  .services-cards-count {
+    @apply text-[70px] leading-[74px];
+    font-family: var(--font-stem);
+    font-weight: 400;
+    color: #666666;
+  }
+
+  .services-cards-description {
+    @apply mt-4 text-[20px] leading-[120%];
+    font-family: var(--font-stem-regular);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Service Card */
+  .service-card {
+    @apply
+      rounded-[30px]
+      overflow-hidden
+      transition-all duration-300;
+    width: 395px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+  }
+
+  .service-card-image {
+    @apply relative w-full;
+    height: 280px;
+  }
+
+  .service-card-tag {
+    @apply
+      absolute top-4 left-4
+      flex items-center gap-2
+      px-3 py-2
+      rounded-full
+      text-[14px];
+    font-family: var(--font-stem);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    color: white;
+  }
+
+  .service-card-content {
+    @apply p-6;
+  }
+
+  .service-card-title {
+    @apply text-white text-[22px] leading-[120%] mb-2;
+    font-family: var(--font-stem);
+    font-weight: 400;
+  }
+
+  .service-card-description {
+    @apply text-[16px] leading-[140%] mb-4;
+    font-family: var(--font-stem-regular);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .service-card-rating {
+    @apply flex items-center gap-2 mb-4;
+  }
+
+  .service-card-rating-star {
+    width: 20px;
+    height: 20px;
+    color: #FFD700;
+  }
+
+  .service-card-rating-text {
+    @apply text-[16px];
+    font-family: var(--font-stem);
+    color: white;
+  }
+
+  .service-card-footer {
+    @apply flex items-center gap-3;
+  }
+
+  .service-card-button {
+    @apply
+      flex-1
+      py-3
+      rounded-full
+      text-center text-[16px]
+      transition-all duration-300;
+    font-family: var(--font-stem);
+    background: white;
+    color: black;
+  }
+
+  .service-card-button:hover {
+    opacity: 0.9;
+  }
+
+  .service-card-chat-button {
+    @apply
+      flex items-center justify-center
+      rounded-full
+      transition-all duration-300;
+    width: 48px;
+    height: 48px;
+    background: var(--color-accent);
+  }
+
+  /* Form Input Styles*/
+.input-label {
+  display: block;
+  color: #000000;
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-family: var(--font-stem);
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+.input-box {
+  width: 100%;
+  height: 67px;
+  padding-left: 60px;
+  padding-right: 20px;
+  border-radius: 20px;
+  background: #F8F9FA;
+  border: none;
+  font-family: var(--font-stem);
+  font-size: 20px;
+  line-height: 100%;
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.4);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-box:focus {
+  color: #000000;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.input-box::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.textarea-box {
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  background: #F8F9FA;
+  border: none;
+  font-family: var(--font-stem);
+  font-size: 20px;
+  line-height: 140%;
+  color: rgba(0, 0, 0, 0.4);
+  outline: none;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.textarea-box:focus {
+  color: #000000;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.textarea-box::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+/* For screens ≤ 1518px, reduce image size */
+@media (max-width: 1518px) {
+  .images-container .before-img,
+  .images-container .after-img {
+    max-width: 90%; /* reduce width to 90% of container */
+    margin: 0 auto; /* center horizontally */
+  }
+
+  .images-container .after-img .logo-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .images-container .after-img .logo-img img {
+    width: 50px;
+  }
+}
+
+}
