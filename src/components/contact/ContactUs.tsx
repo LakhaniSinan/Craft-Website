@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../ui/Button";
-import bgLogo from "./images/contact-bg-logo.png";
+import bgLogo from "/images/contact-bg-logo.png";
 
 const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
