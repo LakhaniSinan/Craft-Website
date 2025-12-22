@@ -1,5 +1,5 @@
 import React from "react";
-import mapImage from "../../assets/images/world-map.png";
+import mapImage from "/images/world-map.png";
 
 const ServiceAreas: React.FC = () => {
   return (

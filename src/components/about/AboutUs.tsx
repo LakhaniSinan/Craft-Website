@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../ui/Button";
-import sofaImage from "../../assets/images/furniture.png";
+import sofaImage from "/images/furniture.png";
 
 const AboutUs: React.FC = () => {
   const stats = [

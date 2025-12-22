@@ -73,7 +73,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             className="flex items-center justify-center rounded-[20px] w-[50.96px] h-[50.96px] border border-[#95BF1F] transition-all duration-300"
           >
             <img
-              src="/src/assets/images/cart-icon-green.png"
+              src="/images/cart-icon-green.png"
               alt="Cart"
               className="w-[20px] h-[19.99px]"
             />

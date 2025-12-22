@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ServiceCategoryCard from "./ServiceCategoryCard";
 import SubcategoryPill from "./SubcategoryPill";
 import ServiceCard from "./ServiceCard";
-import Button from "../ui/Button"; // Use custom button
+import Button from "../ui/Button"; 
 import servicesData from "../../data/services.json";
 
 const Services: React.FC = () => {

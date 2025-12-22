@@ -1,8 +1,8 @@
 import React from "react";
-import calendarIcon from "../../assets/images/calendar-icon.png";
-import whatsappIcon from "../../assets/images/whatsapp-icon.png";
-import xeroIcon from "../../assets/images/xero-icon.png";
-import cloudinaryIcon from "../../assets/images/cloudinary-icon.png";
+import calendarIcon from "/images/calendar-icon.png";
+import whatsappIcon from "/images/whatsapp-icon.png";
+import xeroIcon from "/images/xero-icon.png";
+import cloudinaryIcon from "/images/cloudinary-icon.png";
 
 const Integrations: React.FC = () => {
   const integrations = [

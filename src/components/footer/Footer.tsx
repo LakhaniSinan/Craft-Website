@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/images/craftsman-white-logo.png";
+import logo from "/images/craftsman-white-logo.png";
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState("");

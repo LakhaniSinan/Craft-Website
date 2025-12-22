@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../ui/Button";
-import bgLogo from "../../assets/images/contact-bg-logo.png";
+import bgLogo from "./images/contact-bg-logo.png";
 
 const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -46,7 +46,7 @@ const ContactUs: React.FC = () => {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 text-white p-12 max-w-[458px]">
+            <div className="relative z-10 text-white p-12 max-[458px]">
               <h2 className="text-5xl font-bold mb-6">Get in Touch</h2>
               <p className="text-lg text-white/80 mb-12">
                 Have questions? We're here to help. Reach out to us anytime.

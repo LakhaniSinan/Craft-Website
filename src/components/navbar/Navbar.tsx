@@ -2,8 +2,8 @@
 import { useState } from "react";
 import NavItem from "./NavItem";
 import Button from "../ui/Button";
-import logo from "../../assets/images/craftsman-logo.png";
-import cart from "../../assets/icons/cart-icon.png";
+import logo from "/images/craftsman-logo.png";
+import cart from "/icons/cart-icon.png";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);

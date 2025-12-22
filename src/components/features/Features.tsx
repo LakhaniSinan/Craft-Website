@@ -1,10 +1,10 @@
 import React from "react";
 
 // Feature images
-import jobManagementImg from "../../assets/images/job-management.png";
-import smartSchedulingImg from "../../assets/images/smart-scheduling.png";
-import mobileReportingImg from "../../assets/images/mobile-reporting.png";
-import routeOptimizationImg from "../../assets/images/route-optimization.png";
+import jobManagementImg from "/images/job-management.png";
+import smartSchedulingImg from "/images/smart-scheduling.png";
+import mobileReportingImg from "/images/mobile-reporting.png";
+import routeOptimizationImg from "/images/route-optimization.png";
 
 interface Feature {
   id: number;

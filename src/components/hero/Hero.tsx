@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "../ui/Button";
-import leftImage from "../../assets/images/product-before-img.png";
-import rightImage from "../../assets/images/product-after-img.png";
-import logo from "../../assets/images/craftsman-white-logo.png";
+import leftImage from "/images/product-before-img.png";
+import rightImage from "/images/product-after-img.png";
+import logo from "/images/craftsman-white-logo.png";
 
 const Hero: React.FC = () => {
   return (
