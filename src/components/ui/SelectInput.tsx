@@ -1,6 +1,6 @@
 // ui/SelectInput.tsx
 import React from "react";
-import { FormControl, Select, MenuItem, InputLabel } from "@mui/material";
+import { FormControl, Select, MenuItem } from "@mui/material";
 
 interface SelectInputProps {
   value: string | number;

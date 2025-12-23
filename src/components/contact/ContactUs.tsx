@@ -10,6 +10,7 @@ import bgLogo from "/images/contact-bg-logo.png";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -82,13 +83,7 @@ const ContactUs: React.FC = () => {
 
                 {/* Address */}
                 <div className="flex items-start gap-4">
-                  <svg className="w-6 h-6 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <LocationOnIcon className="mt-1" />
                   <div>
                     <h3 className="font-bold text-lg mb-1">Address</h3>
                     <p className="text-white/80">
