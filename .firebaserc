@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "craftsman-frontend"
+  },
+  "targets": {
+    "craftsman-frontend": {
+      "hosting": {
+        "craftsman-frontend-94adf": [
+          "craftsman-frontend-94adf"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

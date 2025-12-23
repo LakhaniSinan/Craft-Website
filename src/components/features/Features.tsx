@@ -54,9 +54,9 @@ const Features: React.FC = () => {
     <section className="bg-white py-20">
       <div className="container-fixed">
         {/* Header */}
-        <div className="text-center mx-auto my-20 px-4 max-w-311.5">
+        <div className="text-center mx-auto mb-20 px-4 max-w-311.5">
           <p className="text-accent text-2xl font-bold">Our Features</p>
-          <h2 className="text-black mb-8 text-4xl sm:text-5xl md:text-6xl font-bold leading-snug">
+          <h2 className="section-title mb-8 max-[600px]:text-4xl font-bold leading-snug">
             <span>Craftsmanship </span>
             <span className="section-title-accent">
               Beyond <br />

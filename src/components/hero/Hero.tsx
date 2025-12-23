@@ -4,10 +4,11 @@ import Button from "../ui/Button";
 import TextInput from "../ui/TextInput";
 import SelectInput from "../ui/SelectInput";
 import BoxWrapper from "../ui/BoxWrapper";
-
+import SearchIcon from "@mui/icons-material/Search";
 import leftImage from "/images/product-before-img.png";
 import rightImage from "/images/product-after-img.png";
 import logo from "/images/craftsman-white-logo.png";
+import Box from "@mui/material/Box";
 
 const Hero: React.FC = () => {
   const [service, setService] = useState("");
@@ -20,11 +21,11 @@ const Hero: React.FC = () => {
     >
       <div className="container-fixed relative z-10 h-full pt-12">
         {/* Main flex container */}
-        <div className="flex gap-20 max-[860px]:flex-col max-[860px]:gap-8 max-[600px]:mt-20">
+        <div className="flex gap-20 max-[860px]:flex-col max-[860px]:gap-8 ">
 
           {/* Left Content */}
           <div className="rounded-lg max-w-[670px] mt-40 pt-36 max-[1140px]:pt-8 sm:mt-20 max-[860px]:mt-0 max-[860px]:w-full">
-            <h1 className="section-title text-black xl:text-6xl text-5xl lg:text-5xl max-[998px]:text-5xl leading-tight">
+            <h1 className="section-title text-black sm:text-4xl xl:text-6xl lg:text-5xl max-[998px]:text-5xl max-[600px]:pt-12 leading-tight">
               Expert Furniture Repair at{" "}
               <span className="section-title-accent">Your Doorstep</span>
             </h1>
@@ -44,7 +45,7 @@ const Hero: React.FC = () => {
                           max-[860px]:flex-row max-[860px]:gap-2 max-[860px]:mt-0 max-[860px]:ml-0">
 
             {/* Before Image */}
-            <div className="relative w-[calc(100%-70px)] max-[860px]:w-1/2 max-[860px]:h-[300px] rounded-[40px] overflow-hidden before-img mb-4 lg:mb-0 max-[860px]:mb-0">
+            <div className="relative w-[calc(100%-70px)] max-[860px]:w-1/2 max-[860px]:h-[200px] rounded-[40px] overflow-hidden before-img mb-4 lg:mb-0 max-[860px]:mb-0">
               <img
                 src={leftImage}
                 alt="Before"
@@ -65,7 +66,7 @@ const Hero: React.FC = () => {
               </div>
 
               {/* After Image */}
-              <div className="relative w-full rounded-[40px] overflow-hidden mt-4 lg:mt-12 max-[860px]:mt-0 max-[860px]:h-[300px]">
+              <div className="relative w-full rounded-[40px] overflow-hidden mt-4 lg:mt-12 max-[860px]:mt-0 max-[860px]:h-[200px]">
                 <img
                   src={rightImage}
                   alt="After"
@@ -79,39 +80,53 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Search Bar */}
-        <BoxWrapper className="absolute -bottom-36 max-[890px]:-bottom-44 left-1/2 -translate-x-1/2 w-full px-4 max-w-full">
-          <BoxWrapper className="flex items-center gap-4 md:gap-6 px-6 md:px-9 py-4 md:py-6 rounded-[40px] w-full max-w-[1650px] h-auto bg-gradient-to-b from-[rgba(0,0,0,0.34)] to-[rgba(255,255,255,0.34)] backdrop-blur-[5.8px] max-[890px]:flex-col">
+        <BoxWrapper className="absolute -bottom-36 max-[890px]:-bottom-52 left-1/2 -translate-x-1/2 w-full px-4 max-w-full">
+          <BoxWrapper className="flex items-center gap-2 md:gap-6 px-6 md:px-9 py-4 md:py-6 rounded-[40px] w-full max-w-[1650px] h-auto bg-gradient-to-b from-[rgba(0,0,0,0.34)] to-[rgba(255,255,255,0.34)] backdrop-blur-[5.8px] max-[890px]:flex-col">
 
-            {/* First Row: Search Input + All Services */}
-            <BoxWrapper className="flex items-center gap-4 md:gap-6 w-full max-[890px]:flex-row">
-              <TextInput placeholder="Search Services..." />
-              <SelectInput
-                value={service}
-                onChange={(e) => setService(e.target.value)}
-                placeholder="All Services"
-                options={[
+            {/* First Row */}
+            <BoxWrapper className="flex items-center gap-2 md:gap-6 w-full ">
+              <Box className="flex-1">
+                <TextInput
+                  placeholder="Search Services.."
+                  icon={<SearchIcon style={{ color: "rgba(0,0,0,0.4)" }} />}
+                />
+              </Box>
+              <Box className="flex-1">
+                <SelectInput
+                  value={service}
+                  onChange={(e) => setService(e.target.value)}
+                  placeholder="All Services"
+                  options={[
                   { label: "Repair", value: "repair" },
                   { label: "Refinish", value: "refinish" },
                   { label: "Custom Work", value: "custom" },
                 ]}
-              />
+                />
+              </Box>
             </BoxWrapper>
 
-            {/* Second Row: All Types + Search Button */}
-            <BoxWrapper className="flex items-center gap-4 md:gap-6 w-full max-[890px]:flex-row mt-2 max-[890px]:mt-4">
-              <SelectInput
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-                placeholder="All Types"
-                options={[
+            {/* Second Row */}
+            <BoxWrapper className="flex items-center gap-2 md:gap-6 w-full mt-2">
+              <Box className="flex-1">
+                <SelectInput
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                  placeholder="All Types"
+                  options={[
                   { label: "Wood", value: "wood" },
                   { label: "Metal", value: "metal" },
                   { label: "Upholstery", value: "upholstery" },
                 ]}
-              />
-              <Button>Search</Button>
+                />
+              </Box>
+              <Box>
+                <Button
+                sx={{
+                  width: "160px", // or whatever width you want
+                }}>Search
+                </Button>
+              </Box>
             </BoxWrapper>
-
           </BoxWrapper>
         </BoxWrapper>
 

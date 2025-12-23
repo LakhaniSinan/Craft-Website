@@ -1,6 +1,6 @@
 // ui/SelectInput.tsx
 import React from "react";
-import { FormControl, Select, MenuItem } from "@mui/material";
+import { FormControl, Select, MenuItem, InputLabel } from "@mui/material";
 
 interface SelectInputProps {
   value: string | number;
@@ -26,15 +26,27 @@ const SelectInput: React.FC<SelectInputProps> = ({
         onChange={onChange}
         displayEmpty
         sx={{
-          height: "60px",
-          md: { height: "70px" },
-          borderRadius: "15px",
-          backgroundColor: "white",
+          height: "67px", // same as TextInput
+          borderRadius: "20px",
+          backgroundColor: "#F8F9FA",
           fontFamily: "var(--font-stem)",
+          fontSize: "20px",
+          color: "rgba(0,0,0,0.4)",
+          textTransform: "capitalize",
+          "& .MuiSelect-select": {
+            paddingLeft: "20px",
+          },
+          "& fieldset": { border: "none" },
+          "&:focus": {
+            backgroundColor: "#fff",
+            boxShadow: "0 0 0 2px var(--color-accent)",
+          },
           ...sx,
         }}
       >
-        <MenuItem value="">{placeholder}</MenuItem>
+        <MenuItem value="" disabled>
+          {placeholder}
+        </MenuItem>
         {options.map((opt) => (
           <MenuItem key={opt.value} value={opt.value}>
             {opt.label}

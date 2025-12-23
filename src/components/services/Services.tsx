@@ -29,8 +29,8 @@ const Services: React.FC = () => {
     <section className="bg-black py-20">
       <div className="container-fixed">
         {/* Header */}
-        <div className="mt-12 text-center max-w-184 mx-auto">
-          <h2 className="section-title text-white">
+        <div className="mt-12 text-center max-w-184 mx-auto max-[600px]:mt-20">
+          <h2 className="section-title text-white max-[600px]:text-5xl">
             Our <span className="section-title-accent">Services</span>
           </h2>
           <p className="section-description text-white">
@@ -87,9 +87,9 @@ const Services: React.FC = () => {
         </div>
 
         {/* Service Cards Section */}
-        <div className="mt-20">
+        <div className="mt-12">
           <div className="text-center mb-12">
-            <h3 className="services-cards-title">
+            <h3 className="services-cards-title max-[600px]:text-5xl">
               All <span className="services-cards-title-accent">{activeCategoryData?.label}</span>{" "}
               <span className="services-cards-count">({filteredServices.length})</span>
             </h3>

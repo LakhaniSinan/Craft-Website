@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../ui/Card";
 import Rating from "../ui/Rating";
 import { Avatar } from "@mui/material";
+import VerifiedIcon from "@mui/icons-material/Verified";
 
 interface TestimonialCardProps {
   rating: number;
@@ -22,7 +23,11 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 }) => {
   return (
     <Card
-      className="bg-[#F8F9FA] rounded-[50px]"
+      className="rounded-[50px]"
+      sx={{
+        background: "#F8F9FA",
+        backdropFilter: "none",
+      }}
     >
       <div className="p-10 flex flex-col justify-between h-full">
         {/* Top */}
@@ -40,20 +45,15 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
               sx={{ fontSize: "28px" }}
             />
 
-            {/* Verified Badge */}
-            {verified && (
-              <svg
-                className="w-6 h-6 text-blue-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            )}
+           {verified && (
+            <VerifiedIcon
+              sx={{
+                color: "#3B82F6",
+                fontSize: 28,
+              }}
+            />
+          )}
+
           </div>
 
           {/* Review */}

@@ -13,7 +13,7 @@ const ServiceAreas: React.FC = () => {
           </p>
 
           {/* Main Title */}
-          <h2 className="text-black mb-8 section-title">
+          <h2 className="text-black mb-8 section-title max-[600px]:text-5xl">
             <span>Service </span>
             <span className="section-title-accent">Areas</span>
           </h2>

@@ -31,15 +31,15 @@ export default function Navbar() {
         sx={{
           width: "100%",
           maxWidth: "1680px",
-          height: "108.65px",
-          px: "32px",
-          mt: "31px",
+          height: { xs: "70px", md: "108.65px" }, 
+          px: { xs: "16px", md: "32px" },         
+          mt: { xs: "16px", md: "31px" },        
           display: "flex",
           alignItems: "center",
         }}
       >
         {/* Logo */}
-        <Box sx={{ width: "118px", height: "108px" }}>
+        <Box sx={{ width: { xs: "80px", md: "118px" }, height: { xs: "70px", md: "108px" } }}>
           <img src={logo} alt="Logo" style={{ width: "100%" }} />
         </Box>
 
@@ -89,6 +89,7 @@ export default function Navbar() {
           </IconButton>
         </Box>
       </Toolbar>
+
 
       {/* Mobile Menu */}
       {open && (

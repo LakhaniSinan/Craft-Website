@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import TestimonialCard from "./TestimonialCard";
 import testimonialsData from "../../data/testimonial.json";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const Testimonials: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const testimonials = testimonialsData.testimonials;
 
-  // Calculate visible testimonials (3 at a time)
-  const visibleTestimonials = [
-    testimonials[currentIndex],
-    testimonials[(currentIndex + 1) % testimonials.length],
-    testimonials[(currentIndex + 2) % testimonials.length],
-  ];
-
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 600;
+  const visibleTestimonials = isMobile
+  ? [testimonials[currentIndex]]
+  : [
+      testimonials[currentIndex],
+      testimonials[(currentIndex + 1) % testimonials.length],
+      testimonials[(currentIndex + 2) % testimonials.length],
+    ];
   const handlePrev = () => {
     setCurrentIndex((prev) => 
       prev === 0 ? testimonials.length - 1 : prev - 1
@@ -26,7 +29,7 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section className="bg-white py-20">
+    <section className="py-20">
       <div className="container-fixed">
         {/* Header */}
         <div className="text-center mx-auto mb-20 ">
@@ -36,7 +39,7 @@ const Testimonials: React.FC = () => {
           </p>
 
           {/* Main Title */}
-          <h2 className="text-black mb-8 section-title">
+          <h2 className=" mb-8 section-title max-[600px]:text-5xl">
             <span>What Our </span>
             <span className="section-title-accent">Clients Say</span>
           </h2>
@@ -74,19 +77,7 @@ const Testimonials: React.FC = () => {
               className="w-14 h-14 rounded-full bg-white border-2 border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
               aria-label="Previous testimonials"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
+              <ChevronLeftIcon fontSize="small" />
             </button>
 
             {/* Next Button */}
@@ -95,23 +86,11 @@ const Testimonials: React.FC = () => {
               className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center hover:bg-[var(--color-accent)] transition-all duration-300"
               aria-label="Next testimonials"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+              <ChevronRightIcon fontSize="large" />
+
             </button>
           </div>
         </div>
-
       </div>
     </section>
   );

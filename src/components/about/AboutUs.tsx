@@ -86,7 +86,7 @@ const AboutUs: React.FC = () => {
       <div className="bg-white py-20 -mt-20">
         <div className="container-fixed">
           {/* Stats Grid */}
-          <div className="grid grid-cols-4 gap-8 max-[860px]:grid-cols-2 max-[480px]:grid-cols-1">
+          <div className="grid grid-cols-4 gap-8 max-[860px]:grid-cols-2 ">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 {/* Stat Value */}

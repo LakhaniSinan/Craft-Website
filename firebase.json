@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "craftsman-frontend-94adf",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
