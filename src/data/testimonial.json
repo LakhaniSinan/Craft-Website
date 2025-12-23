@@ -6,7 +6,7 @@
       "review": "Excellent Service! They Restored My Antique Chair Beautifully. Highly Recommend!",
       "customerName": "Sarah Johnson",
       "date": "2024-10-30",
-      "avatar": "/assets/images/avatar-1.png",
+      "avatar": "/images/avatar.png",
       "verified": true
     },
     {
@@ -15,7 +15,7 @@
       "review": "Excellent Service! They Restored My Antique Chair Beautifully. Highly Recommend!",
       "customerName": "Sarah Johnson",
       "date": "2024-10-30",
-      "avatar": "/assets/images/avatar-2.png",
+      "avatar": "/images/avatar.png",
       "verified": true
     },
     {
@@ -24,7 +24,7 @@
       "review": "Excellent Service! They Restored My Antique Chair Beautifully. Highly Recommend!",
       "customerName": "Sarah Johnson",
       "date": "2024-10-30",
-      "avatar": "/assets/images/avatar-3.png",
+      "avatar": "/images/avatar.png",
       "verified": true
     },
     {
@@ -33,7 +33,7 @@
       "review": "Professional team with exceptional attention to detail. My vintage sofa looks brand new!",
       "customerName": "Michael Chen",
       "date": "2024-11-15",
-      "avatar": "/assets/images/avatar-4.png",
+      "avatar": "/images/avatar.png",
       "verified": true
     },
     {
@@ -42,7 +42,7 @@
       "review": "Outstanding craftsmanship and customer service. They exceeded all my expectations!",
       "customerName": "Emily Davis",
       "date": "2024-11-20",
-      "avatar": "/assets/images/avatar-5.png",
+      "avatar": "/images/avatar.png",
       "verified": true
     }
   ]

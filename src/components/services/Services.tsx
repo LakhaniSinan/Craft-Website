@@ -15,7 +15,6 @@ const Services: React.FC = () => {
   );
   const subcategories = activeCategoryData?.subcategories || [];
 
-  // Filter service cards dynamically
   const filteredServices = servicesData.serviceCards.filter((service) => {
     if (activeSubcategory && activeSubcategory !== "see-all") {
       return (
@@ -99,13 +98,13 @@ const Services: React.FC = () => {
             </p>
           </div>
 
-         {/* Service Cards Grid */}
+          {/* Service Cards Grid */}
           <div className="flex flex-wrap justify-center gap-8 px-4 max-w-[1660px] mx-auto">
             {filteredServices.map((card) => (
               <div
                 key={card.id}
                 className="flex-shrink-0"
-                style={{ flex: '1 1 395px', maxWidth: '395px' }}
+                style={{ flex: "1 1 395px", maxWidth: "395px" }}
               >
                 <ServiceCard {...card} />
               </div>
@@ -114,7 +113,7 @@ const Services: React.FC = () => {
 
           {/* View All Button */}
           <div className="flex justify-center mt-12">
-            <Button className="bg-white text-black">View All</Button>
+            <Button>View All</Button>
           </div>
         </div>
       </div>

@@ -20,12 +20,7 @@ const ServiceCategoryCard: React.FC<ServiceCategoryCardProps> = ({
         isActive ? "service-category-box-active" : ""
       }`}
     >
-      <img
-        src={image}
-        alt={label}
-        className="w-12 h-12 object-contain mb-3"
-      />
-
+      <img src={image} alt={label} className="w-12 h-12 object-contain mb-3" />
       <span
         className={`service-category-text ${
           isActive ? "service-category-text-active" : ""

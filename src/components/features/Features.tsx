@@ -54,7 +54,7 @@ const Features: React.FC = () => {
     <section className="bg-white py-20">
       <div className="container-fixed">
         {/* Header */}
-        <div className="text-center mx-auto my-20 px-4 max-w-[1246px]">
+        <div className="text-center mx-auto my-20 px-4 max-w-311.5">
           <p className="text-accent text-2xl font-bold">Our Features</p>
           <h2 className="text-black mb-8 text-4xl sm:text-5xl md:text-6xl font-bold leading-snug">
             <span>Craftsmanship </span>
@@ -99,7 +99,7 @@ const Features: React.FC = () => {
 
               {/* Content Box */}
               <div
-                className="relative w-full lg:w-[calc(50%-56px)] h-auto lg:h-[210px] rounded-[30px] flex flex-col justify-center px-6 py-6"
+                className="relative w-full lg:w-[calc(50%-56px)] h-auto lg:h-52.5 rounded-[30px] flex flex-col justify-center px-6 py-6"
                 style={{
                   background:
                     "linear-gradient(179.32deg, rgba(149, 191, 31, 0.1) 0.58%, rgba(149, 191, 31, 0.02) 127.01%)",
@@ -108,13 +108,13 @@ const Features: React.FC = () => {
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-sm sm:text-base lg:text-base text-black/70 leading-relaxed">
+                <p className="text-sm section-description sm:text-base lg:text-base leading-relaxed">
                   {feature.description}
                 </p>
               </div>
 
               {/* Image aligned to Content Box */}
-              <div className="w-full lg:w-[calc(50%-56px)] h-auto lg:h-[428px] rounded-[40px] overflow-hidden flex-shrink-0">
+              <div className="w-full lg:w-[calc(50%-56px)] h-auto lg:h-107 rounded-[40px] overflow-hidden shrink-0">
                 <img
                   src={feature.image}
                   alt={feature.title}

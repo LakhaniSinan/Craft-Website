@@ -1,4 +1,7 @@
 import React from "react";
+import Card from "../ui/Card";
+import Rating from "../ui/Rating";
+import { Avatar } from "@mui/material";
 
 interface TestimonialCardProps {
   rating: number;
@@ -18,64 +21,66 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   verified = true,
 }) => {
   return (
-    <div
-      className="bg-[#F8F9FA] rounded-[50px] p-10 flex flex-col justify-between"
-      
+    <Card
+      className="bg-[#F8F9FA] rounded-[50px]"
     >
-      {/* Rating Section */}
-      <div>
-        <div className="flex items-center gap-2 mb-6">
-          <span className="text-yellow-400 text-3xl font-bold">
-            {rating}
-          </span>
-          {/* Stars */}
-          <div className="flex gap-1">
-            {[...Array(5)].map((_, index) => (
+      <div className="p-10 flex flex-col justify-between h-full">
+        {/* Top */}
+        <div>
+          {/* Rating Row */}
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-yellow-400 text-3xl font-bold">
+              {rating}
+            </span>
+
+            <Rating
+              value={rating}
+              readOnly
+              precision={1}
+              sx={{ fontSize: "28px" }}
+            />
+
+            {/* Verified Badge */}
+            {verified && (
               <svg
-                key={index}
-                className="w-6 h-6 text-yellow-400"
+                className="w-6 h-6 text-blue-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path
+                  fillRule="evenodd"
+                  d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812z"
+                  clipRule="evenodd"
+                />
               </svg>
-            ))}
+            )}
           </div>
-          {/* Verified Badge */}
-          {verified && (
-            <svg
-              className="w-6 h-6 text-blue-500"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clipRule="evenodd"
-              />
-            </svg>
-          )}
+
+          {/* Review */}
+          <p className="text-[#4B5563] text-lg leading-relaxed">
+            “{review}”
+          </p>
         </div>
 
-        {/* Review Text */}
-        <p className="text-[#4B5563] text-lg leading-relaxed">
-          "{review}"
-        </p>
-      </div>
+        {/* Customer */}
+        <div className="flex items-center gap-4 mt-6">
+          <Avatar
+            src={avatar}
+            alt={customerName}
+            sx={{ width: 64, height: 64 }}
+          />
 
-      {/* Customer Info */}
-      <div className="flex items-center gap-4 mt-6">
-        <img
-          src={avatar}
-          alt={customerName}
-          className="w-16 h-16 rounded-full object-cover"
-        />
-        <div>
-          <h4 className="text-black text-lg font-bold">{customerName}</h4>
-          <p className="text-[#6B7280] text-sm">{date}</p>
+          <div>
+            <h4 className="text-black text-lg font-bold">
+              {customerName}
+            </h4>
+            <p className="text-[#6B7280] text-sm">
+              {date}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

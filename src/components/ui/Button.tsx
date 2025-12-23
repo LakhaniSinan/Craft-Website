@@ -1,39 +1,44 @@
-// src/components/ui/Button.tsx
-import { type ReactNode } from "react";
+import { Button as MuiButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import type { ReactNode } from "react";
 
-interface ButtonProps {
+interface Props {
   children: ReactNode;
   to?: string;
-  className?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
+  sx?: object;
 }
 
-export default function Button({ 
-  children, 
-  to, 
-  className = "", 
+export default function Button({
+  children,
+  to,
   onClick,
-  type = "button" 
-}: ButtonProps) {
+  type = "button",
+  sx,
+}: Props) {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
-    } else if (to) {
-      navigate(to);
-    }
-  };
-
   return (
-    <button
+    <MuiButton
       type={type}
-      onClick={handleClick}
-      className={`btn btn-primary ${className}`}
+      variant="contained"
+      disableElevation
+      onClick={onClick ?? (() => to && navigate(to))}
+      sx={{
+        height: "65px",
+        px: "36px",
+        borderRadius: "20px",
+        backgroundColor: "#000",
+        color: "#fff",
+        fontFamily: "var(--font-stem)",
+        fontSize: "20px",
+        textTransform: "none",
+        "&:hover": { opacity: 0.8, backgroundColor: "#000" },
+        ...sx,
+      }}
     >
       {children}
-    </button>
+    </MuiButton>
   );
 }

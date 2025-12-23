@@ -50,22 +50,22 @@ const Testimonials: React.FC = () => {
         {/* Testimonials Grid */}
         <div className="relative w-full max-w-[1680px] mx-auto px-4 sm:px-6">
           <div className="flex flex-wrap gap-8 justify-center items-stretch">
-  {visibleTestimonials.map((testimonial, index) => (
-    <div
-      key={`${testimonial.id}-${index}`}
-      className="flex-shrink-0 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
-    >
-      <TestimonialCard
-        rating={testimonial.rating}
-        review={testimonial.review}
-        customerName={testimonial.customerName}
-        date={testimonial.date}
-        avatar={testimonial.avatar}
-        verified={testimonial.verified}
-      />
-    </div>
-  ))}
-</div>
+          {visibleTestimonials.map((testimonial, index) => (
+            <div
+              key={`${testimonial.id}-${index}`}
+              className="flex-shrink-0 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
+            >
+              <TestimonialCard
+                rating={testimonial.rating}
+                review={testimonial.review}
+                customerName={testimonial.customerName}
+                date={testimonial.date}
+                avatar={testimonial.avatar}
+                verified={testimonial.verified}
+              />
+            </div>
+          ))}
+        </div>
           {/* Navigation Buttons */}
           <div className="flex justify-center gap-4 mt-12 flex-wrap">
             {/* Previous Button */}

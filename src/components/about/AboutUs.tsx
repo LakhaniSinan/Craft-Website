@@ -17,23 +17,28 @@ const AboutUs: React.FC = () => {
         <div className="container-fixed py-20">
           {/* Top Content Section */}
           <div className="flex items-start justify-between gap-16 mb-8 mt-20 max-[820px]:flex-col max-[820px]:gap-8">
-            {/* Left Content */}
+           {/* Left Content */}
             <div className="flex-1 max-[820px]:w-full">
-              {/* Small Label */}
-              <p className="text-accent text-[18px] leading-[120%] font-stem mb-6">
-                About us
-              </p>
+
+              {/* Small Label with line */}
+              <div className="flex items-center gap-4 mb-6">
+                <span className="w-22.25 border-t border-accent opacity-100"></span>
+
+                <p className="text-accent text-[20px] leading-[120%] font-(--font-stem)">
+                  About us
+                </p>
+              </div>
 
               {/* Main Title */}
-              <h2 className="text-[70px] leading-[74px] font-stem font-normal max-[820px]:text-[40px] max-[820px]:leading-[48px]">
-                The Story of <br/>
+              <h2 className="section-title leading-18.5 max-[820px]:text-[40px] max-[820px]:leading-12">
+                The Story of <br />
                 <span className="text-accent-italic">
                   Craftsman Furniture
                 </span>{" "}
                 Repairs
               </h2>
-            </div>
 
+            </div>
             {/* Right Content */}
             <div className="flex-1 max-[820px]:w-full max-[820px]:mt-4">
               {/* Description */}
@@ -41,10 +46,15 @@ const AboutUs: React.FC = () => {
                 Craftsman Furniture Repairs is built upon a rich history of tradition and innovation, upon the enduring legacy of Bradley Upholstery. Founded by Shay Bradley in 1977, Bradley Upholstery distinguished itself with a simple yet profound promise: "All work is carried out by qualified craftsmen." It's this commitment to excellence that has inspired our journey.
               </p>
 
-              {/* Button */}
-              <Button className="bg-white text-black hover:bg-white/90">
-                More About Us
-              </Button>
+              <Button
+              sx={{
+                backgroundColor: "#fff",
+                color: "#000",
+                "&:hover": { backgroundColor: "rgba(255,255,255,0.9)" },
+              }}
+            >
+              More About Us
+            </Button>
             </div>
           </div>
         </div>
@@ -52,7 +62,7 @@ const AboutUs: React.FC = () => {
 
       {/* Video Container - Overlapping */}
       <div className="container-fixed relative -mt-58 mb-32 z-10">
-        <div className="relative w-full h-[680px] rounded-[30px] overflow-hidden">
+        <div className="relative w-full h-170 rounded-[30px] overflow-hidden">
           <img
             src={sofaImage}
             alt="Furniture Repair"
@@ -80,9 +90,9 @@ const AboutUs: React.FC = () => {
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 {/* Stat Value */}
-                <div className="text-[70px] leading-[74px] font-stem font-normal text-accent mb-2 max-[860px]:text-[50px] max-[860px]:leading-[56px] max-[480px]:text-[40px] max-[480px]:leading-[46px]">
+                <div className="text-[70px] leading-18.5 font-stem font-semibold text-accent mb-2 max-[860px]:text-[50px] max-[860px]:leading-14 max-[480px]:text-[40px] max-[480px]:leading-11.5">
                   {stat.value}
-                  <span className="text-accent">{stat.suffix}</span>
+                  <span className="font-semibold">{stat.suffix}</span>
                 </div>
                 
                 {/* Stat Label */}

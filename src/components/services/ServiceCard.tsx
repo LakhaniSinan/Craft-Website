@@ -1,4 +1,6 @@
 import React from "react";
+import Card from "../ui/Card";
+
 interface ServiceCardProps {
   image: string;
   title: string;
@@ -15,12 +17,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   reviews,
 }) => {
   return (
-    <div className="rounded-[30px] overflow-hidden transition-all duration-300 w-[395px] bg-white/5 backdrop-blur-[10px]">
-      {/* Image Section */}
-      <div className="relative w-full h-[280px]">
+    <Card className="service-card">
+      {/* Image */}
+      <div className="service-card-image">
         <img src={image} alt={title} className="w-full h-full object-cover" />
-        {/* Tag */}
-        <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-2 rounded-full text-[14px] font-stem bg-black/60 backdrop-blur-[5px] text-white">
+        <div className="service-card-tag">
           <svg
             width="16"
             height="16"
@@ -40,48 +41,31 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         </div>
       </div>
 
-      {/* Content Section */}
-      <div className="p-6">
-        <h4 className="text-white text-[22px] leading-[120%] mb-2 font-stem font-semibold">
-          {title}
-        </h4>
-        <p className="text-[16px] leading-[140%] mb-4 font-stem-regular font-normal text-white/60">
-          {description}
-        </p>
+      {/* Content */}
+      <div className="service-card-content">
+        <h4 className="service-card-title">{title}</h4>
+        <p className="service-card-description">{description}</p>
 
-        {/* Rating */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="service-card-rating">
           <svg
-            className="w-5 h-5 text-yellow-400"
+            className="service-card-rating-star"
             viewBox="0 0 20 20"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M10 1L12.39 7.26L19 7.27L13.82 11.14L16.18 17.27L10 13.27L3.82 17.27L6.18 11.14L1 7.27L7.61 7.26L10 1Z" />
           </svg>
-          <span className="text-[16px] font-stem text-white">
+          <span className="service-card-rating-text">
             {rating} / {reviews}
           </span>
         </div>
 
-        {/* Footer */}
-        <div className="flex items-center gap-3">
-          <button style={{ fontFamily: "var(--font-stem)" }} className="flex-1 py-3 rounded-full text-center text-[16px] font-stem bg-white text-black transition-all duration-300 hover:opacity-90">
-            Book Now
-          </button>
-          <button
-            className="flex items-center justify-center rounded-[20px] w-[50.96px] h-[50.96px] border border-[#95BF1F] transition-all duration-300"
-          >
-            <img
-              src="/images/cart-icon-green.png"
-              alt="Cart"
-              className="w-[20px] h-[19.99px]"
-            />
-          </button>
-
+        <div className="service-card-footer">
+          <button className="service-card-button">Book Now</button>
+          <button className="flex items-center justify-center rounded-[20px] w-[50.96px] h-[50.96px] border border-[#95BF1F] transition-all duration-300" > <img src="/images/cart-icon-green.png" alt="Cart" className="w-[20px] h-[19.99px]" /> </button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

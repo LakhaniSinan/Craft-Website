@@ -23,19 +23,11 @@ const SubcategoryPill: React.FC<SubcategoryPillProps> = ({
   const textClass =
     variant === "accent"
       ? "subcategory-pill-text subcategory-pill-text-active"
-      : `subcategory-pill-text ${
-          isActive ? "subcategory-pill-text-active" : ""
-        }`;
+      : `subcategory-pill-text ${isActive ? "subcategory-pill-text-active" : ""}`;
 
   return (
     <div className={pillClass} onClick={onClick}>
-      {image && (
-        <img
-          src={image}
-          alt={label}
-          className="w-6 h-6 object-contain"
-        />
-      )}
+      {image && <img src={image} alt={label} className="w-6 h-6 object-contain" />}
       <span className={textClass}>{label}</span>
     </div>
   );
