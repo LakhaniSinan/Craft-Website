@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TestimonialCard from "./TestimonialCard";
-import testimonialsData from "../../data/testimonial.json";
+import testimonialsData from "../../../data/testimonial.json";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 

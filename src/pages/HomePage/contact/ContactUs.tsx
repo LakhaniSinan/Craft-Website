@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Button from "../ui/Button";
-import TextInput from "../ui/TextInput";
-import TextArea from "../ui/TextArea";
-import FormLabel from "../ui/FormLabel";
+import Button from "../../../components/ui/Button";
+import TextInput from "../../../components/ui/TextInput";
+import TextArea from "../../../components/ui/TextArea";
+import FormLabel from "../../../components/ui/FormLabel";
 
 import bgLogo from "/images/contact-bg-logo.png";
 

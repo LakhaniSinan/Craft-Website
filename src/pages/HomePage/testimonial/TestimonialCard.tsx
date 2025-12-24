@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "../ui/Card";
-import Rating from "../ui/Rating";
+import Card from "../../../components/ui/Card";
+import Rating from "../../../components/ui/Rating";
 import { Avatar } from "@mui/material";
 import VerifiedIcon from "@mui/icons-material/Verified";
 

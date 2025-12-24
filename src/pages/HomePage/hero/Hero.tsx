@@ -1,9 +1,9 @@
 // Hero.tsx
 import React, { useState } from "react";
-import Button from "../ui/Button";
-import TextInput from "../ui/TextInput";
-import SelectInput from "../ui/SelectInput";
-import BoxWrapper from "../ui/BoxWrapper";
+import Button from "../../../components/ui/Button";
+import TextInput from "../../../components/ui/TextInput";
+import SelectInput from "../../../components/ui/SelectInput";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 import SearchIcon from "@mui/icons-material/Search";
 import leftImage from "/images/product-before-img.png";
 import rightImage from "/images/product-after-img.png";
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
                           max-[860px]:flex-row max-[860px]:gap-2 max-[860px]:mt-0 max-[860px]:ml-0">
 
             {/* Before Image */}
-            <div className="relative w-[calc(100%-70px)] max-[860px]:w-1/2 max-[860px]:h-[200px] rounded-[40px] overflow-hidden before-img mb-4 lg:mb-0 max-[860px]:mb-0">
+            <div className="relative w-[calc(100%-70px)] max-[860px]:w-1/2 max-[860px]:h-[200px] rounded-[40px] overflow-hidden before-img mb-4 lg:mb-0 max-[860px]:mb-0 max-[860px]:rounded-[10px]">
               <img
                 src={leftImage}
                 alt="Before"
@@ -66,7 +66,7 @@ const Hero: React.FC = () => {
               </div>
 
               {/* After Image */}
-              <div className="relative w-full rounded-[40px] overflow-hidden mt-4 lg:mt-12 max-[860px]:mt-0 max-[860px]:h-[200px]">
+              <div className="relative w-full rounded-[40px] overflow-hidden mt-4 lg:mt-12 max-[860px]:mt-0 max-[860px]:h-[200px] max-[860px]:rounded-[10px]">
                 <img
                   src={rightImage}
                   alt="After"

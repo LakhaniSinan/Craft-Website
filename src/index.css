@@ -27,6 +27,11 @@
     font-display: swap;
     }
 }
+body {
+  margin: 0;
+  font-family: "Stem-Regular", sans-serif;
+  background: #ffffff;
+}
 
 /* ============================= */
 /* Tailwind v4 Theme Tokens     */
