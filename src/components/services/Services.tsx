@@ -90,8 +90,8 @@ const Services: React.FC = () => {
         <div className="mt-12">
           <div className="text-center mb-12">
             <h3 className="services-cards-title max-[600px]:text-5xl">
-              All <span className="services-cards-title-accent">{activeCategoryData?.label}</span>{" "}
-              <span className="services-cards-count">({filteredServices.length})</span>
+              All <span className="services-cards-title-accent max-[600px]:text-5xl">{activeCategoryData?.label}</span>{" "}
+              <span className="services-cards-count max-[600px]:text-5xl">({filteredServices.length})</span>
             </h3>
             <p className="services-cards-description">
               Browse our most requested {activeCategoryData?.label.toLowerCase()} services
