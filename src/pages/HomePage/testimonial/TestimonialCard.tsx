@@ -1,8 +1,7 @@
 import React from "react";
-import Card from "../../../components/ui/Card";
-import Rating from "../../../components/ui/Rating";
-import { Avatar } from "@mui/material";
+import { Box, Avatar, Rating } from "@mui/material";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import Card from "../../../components/ui/Card";
 
 interface TestimonialCardProps {
   rating: number;
@@ -23,63 +22,121 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 }) => {
   return (
     <Card
-      className="rounded-[50px]"
       sx={{
         background: "#F8F9FA",
         backdropFilter: "none",
+        borderRadius: "50px",
+        minWidth: "auto", // CRITICAL: Remove fixed minWidth
+        width: "100%", // CRITICAL: Make it responsive
       }}
     >
-      <div className="p-10 flex flex-col justify-between h-full">
+      <Box 
+        sx={{ 
+          p: 5, 
+          display: "flex", 
+          flexDirection: "column", 
+          justifyContent: "space-between",
+          height: "100%"
+        }}
+      >
         {/* Top */}
-        <div>
+        <Box>
           {/* Rating Row */}
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-yellow-400 text-3xl font-bold">
+          <Box 
+            sx={{ 
+              display: "flex", 
+              alignItems: "center", 
+              gap: 1.5, 
+              mb: 3 
+            }}
+          >
+            <Box
+              component="span"
+              sx={{
+                color: "#FACC15",
+                fontSize: "28px",
+                fontWeight: 700
+              }}
+            >
               {rating}
-            </span>
+            </Box>
 
             <Rating
               value={rating}
               readOnly
-              precision={1}
-              sx={{ fontSize: "28px" }}
-            />
-
-           {verified && (
-            <VerifiedIcon
-              sx={{
-                color: "#3B82F6",
-                fontSize: 28,
+              precision={0.1}
+              sx={{ 
+                fontSize: "28px",
+                "& .MuiRating-iconFilled": {
+                  color: "#FACC15",
+                },
+                "& .MuiRating-iconEmpty": {
+                  color: "#E5E7EB",
+                }
               }}
             />
-          )}
 
-          </div>
+            {verified && (
+              <VerifiedIcon
+                sx={{
+                  color: "#3B82F6",
+                  fontSize: 28,
+                }}
+              />
+            )}
+          </Box>
 
           {/* Review */}
-          <p className="text-[#4B5563] text-lg leading-relaxed">
-            “{review}”
-          </p>
-        </div>
+          <Box
+            component="p"
+            sx={{
+              color: "#4B5563",
+              fontSize: "18px",
+              lineHeight: 1.6
+            }}
+          >
+            "{review}"
+          </Box>
+        </Box>
 
         {/* Customer */}
-        <div className="flex items-center gap-4 mt-6">
+        <Box 
+          sx={{ 
+            display: "flex", 
+            alignItems: "center", 
+            gap: 2, 
+            mt: 3 
+          }}
+        >
           <Avatar
             src={avatar}
             alt={customerName}
             sx={{ width: 64, height: 64 }}
           />
 
-          <div>
-            <h4 className="text-black text-lg font-bold">
+          <Box>
+            <Box
+              component="h4"
+              sx={{
+                color: "#000",
+                fontSize: "18px",
+                fontWeight: 700
+              }}
+            >
               {customerName}
-            </h4>
-            <p className="text-[#6B7280] text-sm">
+            </Box>
+            <Box
+              component="p"
+              sx={{
+                color: "#6B7280",
+                fontSize: "14px"
+              }}
+            >
               {date}
-            </p>
-          </div>
-        </div>
-      </div>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
     </Card>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, Container, Typography } from "@mui/material";
 
 // Feature images
 import jobManagementImg from "/images/job-management.png";
@@ -51,81 +52,181 @@ const featuresData: Feature[] = [
 
 const Features: React.FC = () => {
   return (
-    <section className="bg-white py-20">
-      <div className="container-fixed">
+    <Box sx={{ bgcolor: "#fff", py: "100px" }}>
+      <Container maxWidth={false} sx={{ maxWidth: "1680px", px: "32px" }}>
         {/* Header */}
-        <div className="text-center mx-auto mb-20 px-4 max-w-311.5">
-          <p className="text-accent text-2xl font-bold">Our Features</p>
-          <h2 className="section-title mb-8 max-[600px]:text-4xl font-bold leading-snug">
-            <span>Craftsmanship </span>
-            <span className="section-title-accent">
-              Beyond <br />
-              Compare
-            </span>
-          </h2>
-          <p className="section-description text-base sm:text-lg md:text-xl leading-relaxed">
+        <Box sx={{ textAlign: "center", mb: "120px", maxWidth: "1250px", mx: "auto" }}>
+          <Typography
+            sx={{
+              color: "var(--color-accent)",
+              fontSize: "24px",
+              fontWeight: 700,
+              fontFamily: "var(--font-stem)",
+            }}
+          >
+            Our Features
+          </Typography>
+
+          <Typography
+            sx={{
+              mt: 2,
+              fontFamily: "var(--font-stem)",
+              fontSize: { xs: "40px", sm: "70px" },
+              fontWeight: 600,
+              lineHeight: {lg:"74px", xs: "45px" },
+            }}
+          >
+            Craftsmanship{" "}
+            <Box
+              component="span"
+              sx={{
+                fontFamily: "var(--font-stem-lightitalic)",
+                fontStyle: "italic",
+                color: "var(--color-accent)",
+                fontWeight: 400,
+                
+              }}
+            >
+              Beyond <br/> Compare
+            </Box>
+          </Typography>
+
+          <Typography
+            sx={{
+              mt: 3,
+              fontFamily: "var(--font-stem-regular)",
+              fontSize: { xs: "16px", sm: "20px", md: "25px" },
+              lineHeight: "100%",
+              opacity: 0.6,
+            }}
+          >
             At Craftsman Furniture Repairs, we are dedicated to restoring and
             transforming your furniture back to its former glory. What sets us
             apart is our unwavering commitment to meticulous craftsmanship, a
             passion for preserving history, and a personalized approach to
             every project.
-          </p>
-        </div>
+          </Typography>
+        </Box>
 
-        {/* Features List */}
-        <div className="relative space-y-16">
-          {featuresData.map((feature) => (
-            <div
-              key={feature.id}
-              className={`flex flex-col lg:flex-row items-center gap-8 relative ${
-                feature.imagePosition === "left"
-                  ? "lg:flex-row-reverse justify-between"
-                  : "justify-between"
-              }`}
-            >
-              {/* Vertical Dashed Line */}
-              <div
-                className="absolute top-0 left-0 lg:left-1/2 lg:translate-x-[-50%] w-0 h-full border-l-2 border-dashed border-black/25"
-                style={{
-                  borderImage:
-                    "repeating-linear-gradient(to bottom, rgba(0,0,0,0.25) 0, rgba(0,0,0,0.25) 14px, transparent 14px, transparent 28px) 1",
-                }}
-              />
+        {/* Features */}
+        <Box sx={{ position: "relative", display: "flex", flexDirection: "column", gap: "64px" }}>
+          {featuresData.map((feature) => {
+            const reverse = feature.imagePosition === "left";
 
-              {/* Number Badge on top of line */}
-              <div className="absolute top-0 left-0 lg:left-1/2 lg:translate-x-[-50%] w-16 h-16 lg:w-16 lg:h-16 max-lg:w-12 max-lg:h-12 max-lg:-translate-x-1/2 rounded-full bg-[var(--color-accent)] flex items-center justify-center z-10 border-4 border-white">
-                <span className="text-white text-2xl lg:text-2xl max-lg:text-lg font-bold">{feature.id}</span>
-              </div>
-
-              {/* Content Box */}
-              <div
-                className="relative w-full lg:w-[calc(50%-56px)] h-auto lg:h-52.5 rounded-[30px] flex flex-col justify-center px-6 py-6"
-                style={{
-                  background:
-                    "linear-gradient(179.32deg, rgba(149, 191, 31, 0.1) 0.58%, rgba(149, 191, 31, 0.02) 127.01%)",
+            return (
+              <Box
+                key={feature.id}
+                sx={{
+                  position: "relative",
+                  display: "flex",
+                  flexDirection: { xs: "column", lg: reverse ? "row-reverse" : "row" },
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: "32px",
                 }}
               >
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-sm section-description sm:text-base lg:text-base leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-
-              {/* Image aligned to Content Box */}
-              <div className="w-full lg:w-[calc(50%-56px)] h-auto lg:h-107 rounded-[40px] overflow-hidden shrink-0">
-                <img
-                  src={feature.image}
-                  alt={feature.title}
-                  className="w-full h-full object-cover rounded-[40px]"
+                {/* Vertical dashed line */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: { xs: 0, lg: "50%" },
+                    transform: { lg: "translateX(-50%)" },
+                    height: "100%",
+                    borderLeft: "2px dashed rgba(0,0,0,0.25)",
+                  }}
                 />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+
+                {/* Number badge */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: { xs: 0, lg: "50%" },
+                    transform: { xs: "translateX(-50%)", lg: "translateX(-50%)" },
+                    width: { xs: 48, lg: 64 },
+                    height: { xs: 48, lg: 64 },
+                    borderRadius: "50%",
+                    bgcolor: "var(--color-accent)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: "4px solid #fff",
+                    zIndex: 2,
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: "#fff",
+                      fontFamily: "var(--font-stem)",
+                      fontWeight: 700,
+                      fontSize: { xs: "18px", lg: "24px" },
+                    }}
+                  >
+                    {feature.id}
+                  </Typography>
+                </Box>
+
+                {/* Content */}
+                <Box
+                  sx={{
+                    width: { xs: "100%", lg: "calc(50% - 56px)" },
+                    borderRadius: "30px",
+                    px: 3,
+                    py: 3,
+                    background:
+                      "linear-gradient(179.32deg, rgba(149, 191, 31, 0.1) 0.58%, rgba(149, 191, 31, 0.02) 127.01%)",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontFamily: "var(--font-stem)",
+                      fontWeight: 700,
+                      fontSize: { xs: "24px", sm: "30px", lg: "40px" },
+                      mb: 2,
+                    }}
+                  >
+                    {feature.title}
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      fontFamily: "var(--font-stem-regular)",
+                      fontSize: { xs: "14px", sm: "16px" },
+                      opacity: 0.6,
+                      lineHeight: "160%",
+                    }}
+                  >
+                    {feature.description}
+                  </Typography>
+                </Box>
+
+                {/* Image */}
+                <Box
+                  sx={{
+                    width: { xs: "100%", lg: "calc(50% - 56px)" },
+                    height: { xs: "auto", lg: "430px" },
+                    borderRadius: "40px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={feature.image}
+                    alt={feature.title}
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                </Box>
+              </Box>
+            );
+          })}
+        </Box>
+      </Container>
+    </Box>
   );
 };
 

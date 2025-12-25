@@ -5,19 +5,18 @@ import type { SxProps, Theme } from "@mui/material/styles";
 interface CardProps {
   children?: React.ReactNode;
   actions?: React.ReactNode;
-  className?: string;
   sx?: SxProps<Theme>;
 }
 
-const Card: React.FC<CardProps> = ({ children, actions, className,sx }) => {
+const Card: React.FC<CardProps> = ({ children, actions, sx }) => {
   return (
     <MuiCard
-      className={className}
       sx={{
         borderRadius: "30px",
         overflow: "hidden",
         background: "rgba(255,255,255,0.05)",
-        backdropFilter: "blur(10px)",
+        backdropFilter: "blur(10px)",     
+        width: "100%", 
         ...sx,
       }}
     >

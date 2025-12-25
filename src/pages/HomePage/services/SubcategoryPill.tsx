@@ -1,7 +1,8 @@
 import React from "react";
+import { Box, Typography } from "@mui/material";
 
 interface SubcategoryPillProps {
-  image: string;
+  image?: string;
   label: string;
   isActive?: boolean;
   onClick?: () => void;
@@ -15,21 +16,38 @@ const SubcategoryPill: React.FC<SubcategoryPillProps> = ({
   onClick,
   variant = "default",
 }) => {
-  const pillClass =
-    variant === "accent"
-      ? "subcategory-pill subcategory-pill-active"
-      : `subcategory-pill ${isActive ? "subcategory-pill-active" : ""}`;
-
-  const textClass =
-    variant === "accent"
-      ? "subcategory-pill-text subcategory-pill-text-active"
-      : `subcategory-pill-text ${isActive ? "subcategory-pill-text-active" : ""}`;
+  const bgColor =
+    variant === "accent" || isActive ? "#fff" : "rgba(255,255,255,0.1)";
+  const textColor =
+    variant === "accent" || isActive ? "#000" : "#fff";
 
   return (
-    <div className={pillClass} onClick={onClick}>
-      {image && <img src={image} alt={label} className="w-6 h-6 object-contain" />}
-      <span className={textClass}>{label}</span>
-    </div>
+    <Box
+      onClick={onClick}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: 2,
+        px: 3,
+        py: 1,
+        borderRadius: "9999px",
+        cursor: "pointer",
+        transition: "all 0.3s",
+        background: bgColor,
+        backdropFilter: "blur(10px)",
+      }}
+    >
+      {image && <Box component="img" src={image} alt={label} sx={{ width: 24, height: 24 }} />}
+      <Typography
+        sx={{
+          fontFamily: "var(--font-stem)",
+          fontSize: 18,
+          color: textColor,
+        }}
+      >
+        {label}
+      </Typography>
+    </Box>
   );
 };
 

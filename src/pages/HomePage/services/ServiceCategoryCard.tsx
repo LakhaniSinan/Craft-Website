@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, Typography } from "@mui/material";
 
 interface ServiceCategoryCardProps {
   image: string;
@@ -14,21 +15,35 @@ const ServiceCategoryCard: React.FC<ServiceCategoryCardProps> = ({
   onClick,
 }) => {
   return (
-    <div
+    <Box
       onClick={onClick}
-      className={`service-category-box ${
-        isActive ? "service-category-box-active" : ""
-      }`}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        width: 160,
+        height: 160,
+        borderRadius: "30px",
+        cursor: "pointer",
+        transition: "all 0.3s",
+        background: isActive ? "#fff" : "rgba(255,255,255,0.1)",
+        backdropFilter: "blur(10px)",
+      }}
     >
-      <img src={image} alt={label} className="w-12 h-12 object-contain mb-3" />
-      <span
-        className={`service-category-text ${
-          isActive ? "service-category-text-active" : ""
-        }`}
+      <Box component="img" src={image} alt={label} sx={{ width: 48, height: 48, mb: 1 }} />
+      <Typography
+        sx={{
+          fontFamily: "var(--font-stem)",
+          fontWeight: 500,
+          fontSize: 16,
+          textAlign: "center",
+          color: isActive ? "#000" : "#fff",
+        }}
       >
         {label}
-      </span>
-    </div>
+      </Typography>
+    </Box>
   );
 };
 

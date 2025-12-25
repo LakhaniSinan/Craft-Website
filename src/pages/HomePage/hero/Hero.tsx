@@ -1,5 +1,5 @@
-// Hero.tsx
 import React, { useState } from "react";
+import { Box, Typography } from "@mui/material";
 import Button from "../../../components/ui/Button";
 import TextInput from "../../../components/ui/TextInput";
 import SelectInput from "../../../components/ui/SelectInput";
@@ -8,130 +8,331 @@ import SearchIcon from "@mui/icons-material/Search";
 import leftImage from "/images/product-before-img.png";
 import rightImage from "/images/product-after-img.png";
 import logo from "/images/craftsman-white-logo.png";
-import Box from "@mui/material/Box";
 
 const Hero: React.FC = () => {
   const [service, setService] = useState("");
   const [type, setType] = useState("");
 
   return (
-    <section
-      className="w-full py-20"
-      style={{ background: "linear-gradient(to right, #FFFFFF 70%, #F6F9EC 50%)" }}
+    <Box
+      component="section"
+      sx={{
+        width: "100%",
+        py: "5rem",
+        background: "linear-gradient(to right, #FFFFFF 70%, #F6F9EC 50%)",
+        position: "relative",
+      }}
     >
-      <div className="container-fixed relative z-10 h-full pt-12">
-        {/* Main flex container */}
-        <div className="flex gap-20 max-[860px]:flex-col max-[860px]:gap-8 ">
-
+      <Box
+        sx={{
+          maxWidth: "1680px",
+          mx: "auto",
+          px: "2rem",
+          position: "relative",
+          zIndex: 10,
+          pt: "3rem",
+        }}
+      >
+        {/* Main Flex Container */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: { xs: 3, lg: 5 },
+            flexDirection: { xs: "column", lg: "row" },
+          }}
+        >
           {/* Left Content */}
-          <div className="rounded-lg max-w-[670px] mt-40 pt-36 max-[1140px]:pt-8 sm:mt-20 max-[860px]:mt-0 max-[860px]:w-full">
-            <h1 className="section-title text-black sm:text-4xl xl:text-6xl lg:text-5xl max-[998px]:text-5xl max-[600px]:pt-12 leading-tight">
+          <Box
+            sx={{
+              mt: { lg: "7rem", sm: "5rem", xs: "3rem" },
+              mb: { lg: "3rem" },
+              pt: { lg: "8rem", sm: "2rem", xs: 0 },
+              maxWidth: "670px",
+              borderRadius: "lg",
+            }}
+          >
+            <Typography
+              component="h1"
+              sx={{
+                fontFamily:"var(--font-stem)",
+                fontWeight: 600,
+                fontSize: { xs: "3rem", sm: "4rem", lg: "5rem", xl: "5rem" },
+                lineHeight: 1.05,
+                color: "var(--color-primary)",
+              }}
+            >
               Expert Furniture Repair at{" "}
-              <span className="section-title-accent">Your Doorstep</span>
-            </h1>
+              <Box
+                component="span"
+                sx={{
+                  fontFamily: "var(--font-stem-lightitalic)",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  color: "var(--color-accent)",
+                  
+                }}
+              >
+                Your Doorstep
+              </Box>
+            </Typography>
 
-            <p className="section-description text-black mt-6 max-[998px]:mt-3 max-w-[520px] max-[998px]:text-lg">
-              Professional repair, restoration, and refinishing services for all your furniture needs. Quality craftsmanship delivered with care.
-            </p>
+            <Typography
+              component="p"
+              sx={{
+                mt: 1.5,
+                maxWidth: "520px",
+                fontFamily: "Stem-Regular",
+                fontWeight: 400,
+                fontSize: { xs: "18px", md: "25px" },
+                lineHeight: 1,
+                color: "rgba(0,0,0,0.6)",
+              }}
+            >
+              Professional repair, restoration, and refinishing services for all
+              your furniture needs. Quality craftsmanship delivered with care.
+            </Typography>
 
-            <div className="mt-12 max-[998px]:mt-4">
+            <Box sx={{ mt: { xs: 3, lg: 6 } }}>
               <Button to="/book">Book Now</Button>
-            </div>
-          </div>
+            </Box>
+          </Box>
 
-          {/* Right Side - Images Container */}
-          <div className="relative w-full flex flex-col gap-2 mt-12 ml-12
-                          lg:grid lg:grid-cols-2 lg:gap-0
-                          max-[860px]:flex-row max-[860px]:gap-2 max-[860px]:mt-0 max-[860px]:ml-0">
-
+          {/* Right Side Images */}
+          <Box
+            sx={{
+              position: "relative",
+              width: "100%",
+              display: { xs: "flex", lg: "grid" },
+              gridTemplateColumns: { lg: "repeat(2, 1fr)" },
+              gap: { xs: 2, lg: 0 },
+              mt: { xs: 3, lg: "9rem" },
+              flexDirection: { xs: "row", lg: "unset" },
+              
+            }}
+          >
             {/* Before Image */}
-            <div className="relative w-[calc(100%-70px)] max-[860px]:w-1/2 max-[860px]:h-[200px] rounded-[40px] overflow-hidden before-img mb-4 lg:mb-0 max-[860px]:mb-0 max-[860px]:rounded-[10px]">
-              <img
+            <Box
+              sx={{
+                position: "relative",
+                width: { xs: "50%", lg: "calc(100% - 70px)" },
+                height: { xs: "200px", lg: "auto" },
+                borderRadius: { xs: "10px", lg: "30px" },
+                overflow: "hidden",
+                mb: { xs: 0, lg: 0 }, // match Tailwind mb-0 for lg
+              }}
+            >
+              <Box
+                component="img"
                 src={leftImage}
                 alt="Before"
-                className="w-full h-auto object-cover max-[860px]:h-full"
+                sx={{
+                  width: "100%",
+                  height: { xs: "200px", lg: "auto" },
+                  maxHeight: { lg: "none" }, // do not stretch full container
+                  objectFit: "cover",
+                }}
               />
-              <div className="tag">Before</div>
-            </div>
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "23px",
+                  right: "12px",
+                  bgcolor: "rgba(0,0,0,0.35)",
+                  color: "#fff",
+                  px: 2,
+                  py: 0.5,
+                  borderRadius: "10px",
+                  fontFamily: "Stem-Medium",
+                  fontSize: "18px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                Before
+              </Box>
+            </Box>
 
             {/* After Image */}
-            <div className="relative w-[calc(100%-70px)] max-[860px]:w-1/2 flex flex-col items-start after-img max-[860px]:mt-0">
-              {/* Logo above After Image */}
-              <div className="mt-4 lg:mt-8 w-[60px] md:w-[90px] lg:w-[128px] h-[60px] md:h-[90px] lg:h-[128px] flex items-center justify-center rounded-[30px] bg-[var(--color-accent)] logo-img hidden lg:flex">
-                <img
+            <Box
+              sx={{
+                position: "relative",
+                width: { xs: "50%", lg: "calc(100% - 70px)" },
+                height: { xs: "200px", lg: "auto" },
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+               
+              }}
+            >
+              {/* Logo above After */}
+              <Box
+                sx={{
+                  mt: { xs: 1, lg: 2 },
+                  width: { xs: "60px", md: "90px", lg: "128px" },
+                  height: { xs: "60px", md: "90px", lg: "128px" },
+                  display: { xs: "none", lg: "flex" },
+                  borderRadius: "30px",
+                  bgcolor: "var(--color-accent)",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  component="img"
                   src={logo}
                   alt="Logo"
-                  className="w-[40px] md:w-[60px] lg:w-[92px] h-auto"
-                />
-              </div>
-
-              {/* After Image */}
-              <div className="relative w-full rounded-[40px] overflow-hidden mt-4 lg:mt-12 max-[860px]:mt-0 max-[860px]:h-[200px] max-[860px]:rounded-[10px]">
-                <img
-                  src={rightImage}
-                  alt="After"
-                  className="w-full h-full object-cover"
-                />
-                <div className="tag">After</div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Search Bar */}
-        <BoxWrapper className="absolute -bottom-36 max-[890px]:-bottom-52 left-1/2 -translate-x-1/2 w-full px-4 max-w-full">
-          <BoxWrapper className="flex items-center gap-2 md:gap-6 px-6 md:px-9 py-4 md:py-6 rounded-[40px] w-full max-w-[1650px] h-auto bg-gradient-to-b from-[rgba(0,0,0,0.34)] to-[rgba(255,255,255,0.34)] backdrop-blur-[5.8px] max-[890px]:flex-col">
-
-            {/* First Row */}
-            <BoxWrapper className="flex items-center gap-2 md:gap-6 w-full ">
-              <Box className="flex-1">
-                <TextInput
-                  placeholder="Search Services.."
-                  icon={<SearchIcon style={{ color: "rgba(0,0,0,0.4)" }} />}
+                  sx={{ width: { xs: "40px", md: "60px", lg: "92px" }, height: "auto" }}
                 />
               </Box>
-              <Box className="flex-1">
-                <SelectInput
-                  value={service}
-                  onChange={(e) => setService(e.target.value)}
-                  placeholder="All Services"
-                  options={[
+
+              {/* After Image */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  borderRadius: { xs: "10px", lg: "30px" },
+                  overflow: "hidden",
+                  mt: { xs: 0, lg: "3rem" },
+                  height: { xs: "200px", lg: "auto" },
+                }}
+              >
+                <Box
+                  component="img"
+                  src={rightImage}
+                  alt="After"
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "23px",
+                    right: "12px",
+                    bgcolor: "rgba(0,0,0,0.35)",
+                    color: "#fff",
+                    px: 2,
+                    py: 0.5,
+                    borderRadius: "10px",
+                    fontFamily: "Stem-Medium",
+                    fontSize: "18px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  After
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+
+        </Box>
+
+       {/* Search Bar */}
+      <BoxWrapper
+        sx={{
+          position: "absolute",
+          bottom: { xs: "-13rem", md: "-9rem" }, // Tailwind: -bottom-36 / -bottom-52
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "100%",
+          px: 4,
+          maxWidth: "100%",
+        }}
+      >
+        <BoxWrapper
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" }, // max-[890px]:flex-col
+            alignItems: "center",
+            gap: { xs: 2, md: 4 }, // gap-2 / md:gap-6
+            px: { xs: 2, md: 4 }, // px-6 / md:px-9
+            py: { xs: 2, md: 3 }, // py-4 / md:py-6
+            borderRadius: "40px",
+            width: "100%",
+            maxWidth: "1650px",
+            height: "auto",
+            background: "linear-gradient(to bottom, rgba(0,0,0,0.34), rgba(255,255,255,0.34))",
+            backdropFilter: "blur(5.8px)",
+          }}
+        >
+          {/* First Row */}
+          <BoxWrapper
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: { xs: 2, md: 4 },
+              width: "100%",
+            }}
+          >
+            <Box sx={{ flex: 1 }}>
+              <TextInput
+                placeholder="Search Services.."
+                InputStartIcon={<SearchIcon sx={{ color: "rgba(0,0,0,0.4)" }} />}
+              />
+            </Box>
+            <Box sx={{ flex: 1 }}>
+              <SelectInput
+                value={service}
+                onChange={(e) => setService(e.target.value)}
+                placeholder="All Services"
+                options={[
                   { label: "Repair", value: "repair" },
                   { label: "Refinish", value: "refinish" },
                   { label: "Custom Work", value: "custom" },
                 ]}
-                />
-              </Box>
-            </BoxWrapper>
+              />
+            </Box>
+          </BoxWrapper>
 
-            {/* Second Row */}
-            <BoxWrapper className="flex items-center gap-2 md:gap-6 w-full mt-2">
-              <Box className="flex-1">
-                <SelectInput
-                  value={type}
-                  onChange={(e) => setType(e.target.value)}
-                  placeholder="All Types"
-                  options={[
+          {/* Second Row */}
+          <BoxWrapper
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: { xs: 2, md: 4 },
+              width: "100%",
+            
+              flexWrap: { xs: "wrap", md: "nowrap" }, // mobile wraps
+            }}
+          >
+            <Box sx={{ flex: 1 }}>
+              <SelectInput
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                placeholder="All Types"
+                options={[
                   { label: "Wood", value: "wood" },
                   { label: "Metal", value: "metal" },
                   { label: "Upholstery", value: "upholstery" },
                 ]}
-                />
-              </Box>
-              <Box>
-                <Button
+              />
+            </Box>
+            <Box
+              
+            >
+              <Button
                 sx={{
-                  width: "160px", // or whatever width you want
-                }}>Search
-                </Button>
-              </Box>
-            </BoxWrapper>
+                  width: { xs: "100%", sm: "160px" }, 
+                }}
+              >
+                Search
+              </Button>
+            </Box>
           </BoxWrapper>
         </BoxWrapper>
+      </BoxWrapper>
 
-      </div>
-    </section>
+
+
+      </Box>
+    </Box>
   );
 };
 

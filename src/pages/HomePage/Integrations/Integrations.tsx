@@ -1,4 +1,6 @@
 import React from "react";
+import { Box, Container, Typography } from "@mui/material";
+
 import calendarIcon from "/images/calendar-icon.png";
 import whatsappIcon from "/images/whatsapp-icon.png";
 import xeroIcon from "/images/xero-icon.png";
@@ -12,59 +14,126 @@ const Integrations: React.FC = () => {
     { id: 4, icon: cloudinaryIcon, alt: "Cloudinary" },
   ];
 
-  // Duplicate the logos for seamless scroll
+  // duplicate for seamless scroll
   const repeatedIntegrations = [...integrations, ...integrations];
 
   return (
-    <section
-      className="w-full py-12 overflow-hidden"
-      style={{
+    <Box
+      component="section"
+      sx={{
+        width: "100%",
+        py: "48px",
+        overflow: "hidden",
         background:
           "linear-gradient(179.32deg, rgba(149, 191, 31, 0.1) 0.58%, rgba(149, 191, 31, 0.02) 127.01%)",
       }}
     >
-      <div className="container-fixed flex flex-col items-center px-4 max-[1060px]:px-6">
+      <Container
+        maxWidth={false}
+        sx={{
+          maxWidth: "1680px",
+          px: { xs: "16px", md: "32px", max: "32px" },
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         {/* Title */}
-        <div className="text-center mb-8 w-full max-w-[1026px]">
-          <h2 className="text-[40px] leading-[74px] text-center max-[640px]:text-[30px] max-[640px]:leading-[46px]">
-            <span className="font-bold text-black">Seamlessly </span>
-            <span className="font-light italic text-[var(--color-accent)]">
+        <Box
+          sx={{
+            textAlign: "center",
+            mb: "32px",
+            width: "100%",
+            maxWidth: "1026px",
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: { xs: "30px", sm: "40px" },
+              lineHeight: { xs: "46px", sm: "74px" },
+              textAlign: "center",
+            }}
+          >
+            <Box component="span" sx={{ fontWeight: 700, color: "#000" }}>
+              Seamlessly{" "}
+            </Box>
+            <Box
+              component="span"
+              sx={{
+                fontStyle: "italic",
+                fontWeight: 300,
+                color: "var(--color-accent)",
+              }}
+            >
               Integrated With
-            </span>
-          </h2>
-        </div>
+            </Box>
+          </Typography>
+        </Box>
 
-        {/* Logos Row */}
-        <div className="relative w-full max-w-[1026px] overflow-hidden">
-          <div className="flex animate-scroll">
+        {/* Logos */}
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+            maxWidth: "1026px",
+            overflow: "hidden",
+          }}
+        >
+          <Box
+            className="integrations-scroll"
+            sx={{
+              display: "flex",
+              width: "fit-content",
+            }}
+          >
             {repeatedIntegrations.map((integration, index) => (
-              <div
+              <Box
                 key={index}
-                className="flex items-center justify-center flex-shrink-0 px-6"
+                sx={{
+                  px: "24px",
+                  flexShrink: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
-                <img
+                <Box
+                  component="img"
                   src={integration.icon}
                   alt={integration.alt}
-                  className="h-16 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  sx={{
+                    height: "64px",
+                    width: "auto",
+                    objectFit: "contain",
+                    filter: "grayscale(100%)",
+                    opacity: 0.6,
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      filter: "grayscale(0%)",
+                      opacity: 1,
+                    },
+                  }}
                 />
-              </div>
+              </Box>
             ))}
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Container>
 
-      {/* CSS for smooth scroll */}
-      <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); } /* Half the width, because of duplication */
-        }
-        .animate-scroll {
-          display: flex;
-          animation: scroll 10s linear infinite;
-        }
-      `}</style>
-    </section>
+      {/* Animation */}
+      <style>
+        {`
+          @keyframes integrations-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+
+          .integrations-scroll {
+            animation: integrations-scroll 10s linear infinite;
+          }
+        `}
+      </style>
+    </Box>
   );
 };
 

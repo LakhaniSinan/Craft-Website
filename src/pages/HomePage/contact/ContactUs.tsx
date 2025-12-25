@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Button from "../../../components/ui/Button";
+import { Box, Typography, Grid, Button } from "@mui/material";
 import TextInput from "../../../components/ui/TextInput";
 import TextArea from "../../../components/ui/TextArea";
-import FormLabel from "../../../components/ui/FormLabel";
 
 import bgLogo from "/images/contact-bg-logo.png";
 
@@ -31,140 +30,259 @@ const ContactUs: React.FC = () => {
     console.log("Form submitted:", formData);
   };
 
+  // Contact Info Data
+  const contactInfo = [
+    {
+      icon: PhoneIcon,
+      label: "Phone",
+      value: "+1 (555) 123-4567",
+    },
+    {
+      icon: EmailIcon,
+      label: "Email",
+      value: "support@furnicarepro.com",
+      underline: true,
+    },
+    {
+      icon: LocationOnIcon,
+      label: "Address",
+      value: "Downtown, Eastside, Westside",
+      subtitle: "Serving 25+ neighborhoods",
+    },
+  ];
+
   return (
-    <section className="py-20 relative z-10">
-      <div className="container-fixed bg-white py-12 rounded-[40px] shadow-[0px_4px_60px_0px_#0000000D]">
-
+    <Box component="section" sx={{ py: { xs: 10, md: 20 }, position: "relative", zIndex: 10 }}>
+      <Box
+        sx={{
+          maxWidth: "1680px",
+          mx: "auto",
+          px: { xs: 2, sm: 4 },
+          backgroundColor: "#fff",
+          py: 6,
+          borderRadius: "40px",
+          boxShadow: "0px 4px 60px 0px rgba(0, 0, 0, 0.05)",
+        }}
+      >
         {/* MAIN WRAPPER */}
-        <div className="flex flex-col lg:flex-row gap-8 mx-auto w-full max-w-420">
-
-          {/* LEFT SIDE */}
-          <div className="relative rounded-[40px] bg-black overflow-hidden w-full lg:w-177.5 min-h-187.75">
-
-            {/* Background Logo */}
-            <div
-              className="absolute inset-0 flex items-center justify-center"
-              style={{ opacity: 0.06 }}
+        <Grid
+          container
+          spacing={{ xs: 2, sm: 3, md: 4 }}
+          sx={{
+            mx: "auto",
+            width: "100%",
+            maxWidth: "1680px",
+          }}
+        >
+          {/* LEFT SIDE - Contact Info */}
+          <Grid size={{ xs: 12, lg: 5 }}>
+            <Box
+              sx={{
+                position: "relative",
+                borderRadius: "40px",
+                backgroundColor: "#000",
+                overflow: "hidden",
+                width: "100%",
+                minHeight: { xs: "400px", lg: "751px" },
+              }}
             >
-              <img
-                src={bgLogo}
-                alt="Background"
-                className="w-full h-full object-contain"
-              />
-            </div>
+              {/* Background Logo */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  opacity: 0.06,
+                }}
+              >
+                <Box
+                  component="img"
+                  src={bgLogo}
+                  alt="Background"
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
+              </Box>
 
-            {/* Content */}
-            <div className="relative z-10 text-white p-12">
-              <h2 className="text-5xl font-bold mb-6 max-[600px]:text-4xl">Get in Touch</h2>
-              <p className="text-lg text-white/80 mb-12">
-                Have questions? We're here to help. Reach out to us anytime.
-              </p>
+              {/* Content */}
+              <Box
+                sx={{
+                  position: "relative",
+                  zIndex: 10,
+                  color: "#fff",
+                  p: { xs: 4, sm: 5, md: 6 },
+                }}
+              >
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontSize: { xs: "36px", md: "48px" },
+                    fontWeight: 700,
+                    mb: 3,
+                    fontFamily: "var(--font-stem)",
+                    "@media (max-width: 600px)": {
+                      fontSize: "36px",
+                    },
+                  }}
+                >
+                  Get in Touch
+                </Typography>
 
-              <div className="space-y-8">
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "rgba(255, 255, 255, 0.8)",
+                    mb: 6,
+                    fontFamily: "var(--font-stem-regular)",
+                  }}
+                >
+                  Have questions? We're here to help. Reach out to us anytime.
+                </Typography>
+
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  {contactInfo.map((info, index) => (
+                    <Box
+                      key={index}
+                      sx={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 2,
+                      }}
+                    >
+                      <info.icon sx={{ mt: 0.5 }} />
+                      <Box>
+                        <Typography
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: "18px",
+                            mb: 0.5,
+                            fontFamily: "var(--font-stem)",
+                          }}
+                        >
+                          {info.label}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            color: "rgba(255, 255, 255, 0.8)",
+                            fontSize: "16px",
+                            textDecoration: info.underline ? "underline" : "none",
+                            fontFamily: "var(--font-stem-regular)",
+                          }}
+                        >
+                          {info.value}
+                        </Typography>
+                        {info.subtitle && (
+                          <Typography
+                            sx={{
+                              color: "rgba(255, 255, 255, 0.8)",
+                              fontSize: "16px",
+                              fontFamily: "var(--font-stem-regular)",
+                            }}
+                          >
+                            {info.subtitle}
+                          </Typography>
+                        )}
+                      </Box>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+          </Grid>
+
+          {/* RIGHT SIDE - Form */}
+          <Grid size={{ xs: 12, lg: 7 }}>
+            <Box
+              sx={{
+                borderRadius: "20px",
+                mt: { xs: 2, lg: 8 },
+                width: "100%",
+              }}
+            >
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                {/* First Name & Email */}
+                <Grid container spacing={3}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
+                    <TextInput
+                      showLabel="First Name"
+                      required
+                      name="firstName"
+                      placeholder="Your First Name"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      InputStartIcon={<PersonIcon sx={{ color: "var(--color-accent)" }} />}
+                    />
+                  </Grid>
+
+                  <Grid size={{ xs: 12, sm: 6 }}>
+                    <TextInput
+                      showLabel="Email"
+                      required
+                      name="email"
+                      type="email"
+                      placeholder="Your Email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      InputStartIcon={<EmailIcon sx={{ color: "var(--color-accent)" }} />}
+                    />
+                  </Grid>
+                </Grid>
+
                 {/* Phone */}
-                <div className="flex items-start gap-4">
-                  <PhoneIcon className="mt-1" />
-                  <div>
-                    <h3 className="font-bold text-lg mb-1">Phone</h3>
-                    <p className="text-white/80">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className="flex items-start gap-4">
-                  <EmailIcon className="mt-1" />
-                  <div>
-                    <h3 className="font-bold text-lg mb-1">Email</h3>
-                    <p className="text-white/80 underline">
-                      support@furnicarepro.com
-                    </p>
-                  </div>
-                </div>
-
-                {/* Address */}
-                <div className="flex items-start gap-4">
-                  <LocationOnIcon className="mt-1" />
-                  <div>
-                    <h3 className="font-bold text-lg mb-1">Address</h3>
-                    <p className="text-white/80">
-                      Downtown, Eastside, Westside <br />
-                      Serving 25+ neighborhoods
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT SIDE FORM */}
-          <div className="rounded-lg mt-16 w-full lg:w-205">
-            <div className="space-y-6">
-
-              {/* First Name & Email */}
-              <div className="flex flex-col sm:flex-row gap-6">
-                <div className="flex-1">
-                  <FormLabel required>First Name</FormLabel>
-                  <TextInput
-                    placeholder="Your First Name"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    icon={<PersonIcon sx={{ color: "var(--color-accent)" }} />}
-                  />
-                </div>
-
-                <div className="flex-1">
-                  <FormLabel required>Email</FormLabel>
-                  <TextInput
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    icon={<EmailIcon sx={{ color: "var(--color-accent)" }} />}
-                  />
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div>
-                <FormLabel required>Phone</FormLabel>
                 <TextInput
+                  showLabel="Phone"
+                  required
+                  name="phone"
                   type="tel"
                   placeholder="Your Phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  icon={<PhoneIcon sx={{ color: "var(--color-accent)" }} />}
+                  InputStartIcon={<PhoneIcon sx={{ color: "var(--color-accent)" }} />}
                 />
-              </div>
 
-              {/* Message */}
-              <div>
-                <FormLabel required>Message</FormLabel>
-                <TextArea
-                  placeholder="Tell Us About Your Furniture Repair Needs..."
-                  value={formData.message}
-                  onChange={handleChange}
-                />
-              </div>
+                {/* Message - Textarea with 7 rows */}
+                <Box>
+                  Message
+                  <TextArea
+                    name="message"
+                    placeholder="Tell Us About Your Furniture Repair Needs..."
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
+                </Box>
 
-              {/* Button */}
-              <Button
-                onClick={handleSubmit}
-                sx={{
-                  width: "240px",
-                  mt: "24px",
-                  backgroundColor: "#000",
-                  "&:hover": { backgroundColor: "#000" },
-                }}
-              >
-                Send Message
-              </Button>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
+                {/* Button */}
+                <Button
+                  onClick={handleSubmit}
+                  sx={{
+                    width: "240px",
+                    height: "65px",
+                    mt: 1,
+                    backgroundColor: "#000",
+                    color: "#fff",
+                    borderRadius: "20px",
+                    fontSize: "20px",
+                    fontFamily: "var(--font-stem)",
+                    textTransform: "none",
+                    "&:hover": {
+                      backgroundColor: "#000",
+                      opacity: 0.8,
+                    },
+                  }}
+                >
+                  Send Message
+                </Button>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+    </Box>
   );
 };
 

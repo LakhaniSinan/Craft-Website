@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from "react";
-import TestimonialCard from "./TestimonialCard";
-import testimonialsData from "../../../data/testimonial.json";
+import { Box, IconButton } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import TestimonialCard from "./TestimonialCard";
+import testimonialsData from "../../../data/testimonial.json";
 
 const Testimonials: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const testimonials = testimonialsData.testimonials;
 
-  // Detect window resize
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 600);
+      setIsMobile(window.innerWidth < 800);
     };
-    handleResize(); // initial check
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Calculate visible testimonials
   const visibleTestimonials = isMobile
     ? [testimonials[currentIndex]]
     : [
@@ -37,29 +36,100 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section className="py-20">
-      <div className="container-fixed">
+    <Box component="section" sx={{ py: { xs: 10, md: 20 } }}>
+      <Box
+        sx={{
+          maxWidth: "1680px",
+          mx: "auto",
+          px: { xs: 2, sm: 4 }
+        }}
+      >
         {/* Header */}
-        <div className="text-center mx-auto mb-20 ">
-          <p className="text-[var(--color-accent)] text-lg font-medium mb-6">
+        <Box sx={{ textAlign: "center", mx: "auto", mb: { xs: 10, md: 20 } }}>
+          <Box
+            component="p"
+            sx={{
+              color: "var(--color-accent)",
+              fontSize: "18px",
+              fontWeight: 500,
+              mb: 3
+            }}
+          >
             Testimonials
-          </p>
-          <h2 className=" mb-8 section-title max-[600px]:text-5xl">
-            <span>What Our </span>
-            <span className="section-title-accent">Clients Say</span>
-          </h2>
-          <p className="section-description">
+          </Box>
+
+          <Box
+            component="h2"
+            sx={{
+              mb: 4,
+              fontSize: { xs: "48px", md: "70px" },
+              lineHeight: { xs: "52px", md: "74px" },
+              fontFamily: "var(--font-stem)",
+              fontWeight: 600,
+              color: "#000",
+              "@media (max-width: 600px)": {
+                fontSize: "48px"
+              }
+            }}
+          >
+            <Box component="span">What Our </Box>
+            <Box 
+              component="span" 
+              sx={{ 
+                fontStyle: "italic", 
+                fontWeight: 400,
+                color: "var(--color-accent)",
+                fontFamily: "var(--font-stem-lightitalic)"
+              }}
+            >
+              Clients Say
+            </Box>
+          </Box>
+
+          <Box
+            component="p"
+            sx={{
+              fontSize: { xs: "20px", sm: "25px" },
+              fontWeight: 400,
+              lineHeight: "100%",
+              fontFamily: "var(--font-stem-regular)",
+              color: "rgba(0, 0, 0, 0.6)"
+            }}
+          >
             Real reviews from satisfied customers
-          </p>
-        </div>
+          </Box>
+        </Box>
 
         {/* Testimonials Grid */}
-        <div className="relative w-full max-w-[1680px] mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap gap-8 justify-center items-stretch">
+        <Box 
+          sx={{ 
+            position: "relative", 
+            width: "100%", 
+            maxWidth: "1680px", 
+            mx: "auto", 
+            px: { xs: 2, sm: 3 }
+          }}
+        >
+          <Box 
+            sx={{ 
+              display: "flex", 
+              flexWrap: "wrap", 
+              gap: 4,
+              justifyContent: "center",
+              alignItems: "stretch"
+            }}
+          >
             {visibleTestimonials.map((testimonial, index) => (
-              <div
+              <Box
                 key={`${testimonial.id}-${index}`}
-                className="flex-shrink-0 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
+                sx={{
+                  flexShrink: 0,
+                  width: {
+                    xs: "100%",
+                    sm: "calc(60% - 16px)",
+                    lg: "calc(33.333% - 21.33px)"
+                  }
+                }}
               >
                 <TestimonialCard
                   rating={testimonial.rating}
@@ -69,31 +139,66 @@ const Testimonials: React.FC = () => {
                   avatar={testimonial.avatar}
                   verified={testimonial.verified}
                 />
-              </div>
+              </Box>
             ))}
-          </div>
+          </Box>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-center gap-4 mt-12 flex-wrap">
-            <button
+          <Box 
+            sx={{ 
+              display: "flex", 
+              justifyContent: "center", 
+              gap: 2, 
+              mt: 6,
+              flexWrap: "wrap"
+            }}
+          >
+            <IconButton
               onClick={handlePrev}
-              className="w-14 h-14 rounded-full bg-white border-2 border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
+              sx={{
+                width: 56,
+                height: 56,
+                borderRadius: "50%",
+                backgroundColor: "#fff",
+                border: "2px solid rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "#000",
+                  color: "#fff",
+                }
+              }}
               aria-label="Previous testimonials"
             >
               <ChevronLeftIcon fontSize="small" />
-            </button>
+            </IconButton>
 
-            <button
+            <IconButton
               onClick={handleNext}
-              className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center hover:bg-[var(--color-accent)] transition-all duration-300"
+              sx={{
+                width: 56,
+                height: 56,
+                borderRadius: "50%",
+                backgroundColor: "#000",
+                color: "#fff",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "var(--color-accent)",
+                }
+              }}
               aria-label="Next testimonials"
             >
               <ChevronRightIcon fontSize="large" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
+            </IconButton>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

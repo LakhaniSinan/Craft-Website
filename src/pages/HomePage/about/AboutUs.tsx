@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { Box, Container, Typography, IconButton } from "@mui/material";
 import Button from "../../../components/ui/Button";
 import sofaImage from "/images/furniture.png";
+import playIcon from "/icons/play.svg"; 
 
 const AboutUs: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const stats = [
     { value: "5000", label: "Happy Customers", suffix: "+" },
     { value: "13", label: "Years Experience", suffix: "+" },
@@ -10,102 +15,238 @@ const AboutUs: React.FC = () => {
     { value: "98", label: "Satisfaction Rate", suffix: "%" },
   ];
 
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+
+    if (isPlaying) {
+      videoRef.current.pause?.();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play?.();
+      setIsPlaying(true);
+    }
+  };
+
   return (
-    <section className="relative">
-      {/* Black Background Section */}
-      <div className="bg-black text-white pb-64">
-        <div className="container-fixed py-20">
-          {/* Top Content Section */}
-          <div className="flex items-start justify-between gap-16 mb-8 mt-20 max-[820px]:flex-col max-[820px]:gap-8">
-           {/* Left Content */}
-            <div className="flex-1 max-[820px]:w-full">
-
-              {/* Small Label with line */}
-              <div className="flex items-center gap-4 mb-6">
-                <span className="w-22.25 border-t border-accent opacity-100"></span>
-
-                <p className="text-accent text-[20px] leading-[120%] font-(--font-stem)">
+    <Box position="relative">
+      {/* ================= BLACK SECTION ================= */}
+      <Box bgcolor="#000" color="#fff" pb="256px">
+        <Container maxWidth={false} sx={{ maxWidth: "1680px", py: "80px" }}>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            gap="64px"
+            mt="80px"
+            flexDirection={{ xs: "column", md: "row" }}
+          >
+            {/* LEFT */}
+            <Box flex={1}>
+              {/* Label */}
+              <Box display="flex" alignItems="center" gap="16px" mb="24px">
+                <Box sx={{ width: "89px", borderTop: "1px solid #95BF1F" }} />
+                <Typography
+                  sx={{
+                    color: "#95BF1F",
+                    fontSize: "20px",
+                    fontFamily: "var(--font-stem)",
+                  }}
+                >
                   About us
-                </p>
-              </div>
+                </Typography>
+              </Box>
 
-              {/* Main Title */}
-              <h2 className="section-title leading-18.5 max-[820px]:text-[40px] max-[820px]:leading-12">
+              {/* Title */}
+              <Typography
+                sx={{
+                  fontSize: { xs: "40px", md: "70px" },
+                  lineHeight: { xs: "48px", md: "74px" },
+                  fontFamily: "var(--font-stem)",
+                  fontWeight: 600,
+                }}
+              >
                 The Story of <br />
-                <span className="text-accent-italic">
+                <Box
+                  component="span"
+                  sx={{
+                    fontFamily: "var(--font-stem-lightitalic)",
+                    fontStyle: "italic",
+                    color: "#95BF1F",
+                    fontWeight: 400,
+                  }}
+                >
                   Craftsman Furniture
-                </span>{" "}
+                </Box>{" "}
                 Repairs
-              </h2>
+              </Typography>
+            </Box>
 
-            </div>
-            {/* Right Content */}
-            <div className="flex-1 max-[820px]:w-full max-[820px]:mt-4">
-              {/* Description */}
-              <p className="section-description text-white mb-8 max-[820px]:text-base max-[820px]:leading-relaxed">
-                Craftsman Furniture Repairs is built upon a rich history of tradition and innovation, upon the enduring legacy of Bradley Upholstery. Founded by Shay Bradley in 1977, Bradley Upholstery distinguished itself with a simple yet profound promise: "All work is carried out by qualified craftsmen." It's this commitment to excellence that has inspired our journey.
-              </p>
+            {/* RIGHT */}
+            <Box flex={1}>
+              <Typography
+                sx={{
+                  fontSize: { xs: "16px", md: "25px" },
+                  lineHeight: "140%",
+                  opacity: 0.6,
+                  fontFamily: "var(--font-stem-regular)",
+                  mb: "32px",
+                }}
+              >
+                Craftsman Furniture Repairs is built upon a rich history of
+                tradition and innovation, upon the enduring legacy of Bradley
+                Upholstery. Founded by Shay Bradley in 1977, Bradley Upholstery
+                distinguished itself with a simple yet profound promise: "All
+                work is carried out by qualified craftsmen."
+              </Typography>
 
               <Button
+                sx={{
+                  backgroundColor: "#fff",
+                  color: "#000",
+                  "&:hover": { backgroundColor: "rgba(255,255,255,0.9)" },
+                }}
+              >
+                More About Us
+              </Button>
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* ================= IMAGE AS VIDEO PLACEHOLDER ================= */}
+      <Box
+        position="relative"
+        sx={{
+          mt: "-232px",
+          mb: "128px",
+          zIndex: 10,
+        }}
+      >
+        <Container maxWidth={false} sx={{ maxWidth: "1680px" }}>
+          <Box
+            sx={{
+              width: "100%",
+              height: "680px",
+              borderRadius: "30px",
+              overflow: "hidden",
+              position: "relative",
+              cursor: "pointer",
+            }}
+            onClick={togglePlay}
+          >
+            {/* Image placeholder instead of video */}
+            <Box
+              component="img"
+              src={sofaImage}
+              alt="Furniture Repair"
               sx={{
-                backgroundColor: "#fff",
-                color: "#000",
-                "&:hover": { backgroundColor: "rgba(255,255,255,0.9)" },
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
               }}
-            >
-              More About Us
-            </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+            />
 
-      {/* Video Container - Overlapping */}
-      <div className="container-fixed relative -mt-58 mb-32 z-10">
-        <div className="relative w-full h-170 rounded-[30px] overflow-hidden">
-          <img
-            src={sofaImage}
-            alt="Furniture Repair"
-            className="w-full h-full object-cover"
-          />
-          
-          {/* Play Button */}
-          <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-all group">
-            <svg
-              className="w-8 h-8 text-accent ml-1"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </button>
-        </div>
-      </div>
+            {/* Play Button */}
+            {!isPlaying && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {/* Outer blurred circle */}
+                <Box
+                  sx={{
+                    width: 120,
+                    height: 120,
+                    borderRadius: "50%",
+                    backgroundColor: "rgba(255, 255, 255, 0.2)",
+                    backdropFilter: "blur(4px)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    togglePlay();
+                  }}
+                >
+                  {/* Middle solid white circle */}
+                  <Box
+                    sx={{
+                      width: 80,
+                      height: 80,
+                      borderRadius: "50%",
+                      backgroundColor: "#fff",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {/* Play icon */}
+                    <Box
+                      component="img"
+                      src={playIcon}
+                      alt="play"
+                      sx={{ width: 32, height: 32 }}
+                    />
+                  </Box>
+                </Box>
+              </Box>
+            )}
+          </Box>
+        </Container>
+      </Box>
 
-      {/* White Background Section with Stats */}
-      <div className="bg-white py-20 -mt-20">
-        <div className="container-fixed">
-          {/* Stats Grid */}
-          <div className="grid grid-cols-4 gap-8 max-[860px]:grid-cols-2 ">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                {/* Stat Value */}
-                <div className="text-[70px] leading-18.5 font-stem font-semibold text-accent mb-2 max-[860px]:text-[50px] max-[860px]:leading-14 max-[480px]:text-[40px] max-[480px]:leading-11.5">
+      {/* ================= STATS SECTION ================= */}
+      <Box bgcolor="#fff" py="80px" mt="-80px">
+        <Container maxWidth={false} sx={{ maxWidth: "1680px" }}>
+          <Box
+            display="grid"
+            gridTemplateColumns={{
+              xs: "repeat(2, 1fr)",
+              md: "repeat(4, 1fr)",
+            }}
+            gap="32px"
+            textAlign="center"
+          >
+            {stats.map((stat, i) => (
+              <Box key={i}>
+                <Typography
+                  sx={{
+                    fontSize: { xs: "40px", sm: "50px", md: "70px" },
+                    lineHeight: "74px",
+                    fontFamily: "var(--font-stem)",
+                    fontWeight: 600,
+                    color: "#95BF1F",
+                  }}
+                >
                   {stat.value}
-                  <span className="font-semibold">{stat.suffix}</span>
-                </div>
-                
-                {/* Stat Label */}
-                <p className="section-description text-black max-[860px]:text-base max-[480px]:text-sm">
+                  {stat.suffix}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: { xs: "14px", md: "18px" },
+                    fontFamily: "var(--font-stem-regular)",
+                    color: "#000",
+                    opacity: 0.6,
+                  }}
+                >
                   {stat.label}
-                </p>
-              </div>
+                </Typography>
+              </Box>
             ))}
-          </div>
-        </div>
-      </div>
-
-    </section>
+          </Box>
+        </Container>
+      </Box>
+    </Box>
   );
 };
 
