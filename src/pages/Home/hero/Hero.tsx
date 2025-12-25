@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
             <Typography
               component="p"
               sx={{
-                mt: 1.5,
+                mt: 2,
                 maxWidth: "520px",
                 fontFamily: "Stem-Regular",
                 fontWeight: 400,
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
               your furniture needs. Quality craftsmanship delivered with care.
             </Typography>
 
-            <Box sx={{ mt: { xs: 3, lg: 6 } }}>
+            <Box sx={{ mt: { xs: 3, lg: 8 } }}>
               <Button to="/book">Book Now</Button>
             </Box>
           </Box>

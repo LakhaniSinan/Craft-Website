@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Box, Container, Typography, IconButton } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import Button from "../../../components/ui/Button";
 import sofaImage from "/images/furniture.png";
 import playIcon from "/icons/play.svg"; 
