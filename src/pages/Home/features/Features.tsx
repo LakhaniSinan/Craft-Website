@@ -110,6 +110,19 @@ const Features: React.FC = () => {
 
         {/* Features */}
         <Box sx={{ position: "relative", display: "flex", flexDirection: "column", gap: "64px" }}>
+          {/* vertical dashed line */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: { xs: 0, lg: "50%" },
+              transform: { lg: "translateX(-50%)" },
+              height: "100%",
+              borderLeft: "2px dashed rgba(0,0,0,0.25)",
+              zIndex: 0,
+            }}
+          />
+
           {featuresData.map((feature) => {
             const reverse = feature.imagePosition === "left";
 
@@ -125,18 +138,6 @@ const Features: React.FC = () => {
                   gap: "32px",
                 }}
               >
-                {/* Vertical dashed line */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: 0,
-                    left: { xs: 0, lg: "50%" },
-                    transform: { lg: "translateX(-50%)" },
-                    height: "100%",
-                    borderLeft: "2px dashed rgba(0,0,0,0.25)",
-                  }}
-                />
-
                 {/* Number badge */}
                 <Box
                   sx={{
