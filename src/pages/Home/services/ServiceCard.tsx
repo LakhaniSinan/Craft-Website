@@ -84,7 +84,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           <MuiButton
             sx={{
               flex: 1,
-              borderRadius: "9999px",
+              borderRadius: "20px",
+              width: 50,
+              height: 50,
               bgcolor: "#fff",
               color: "#000",
               "&:hover": { opacity: 0.9 },

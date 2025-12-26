@@ -229,14 +229,13 @@ const Hero: React.FC = () => {
               </Box>
             </Box>
           </Box>
-
         </Box>
 
        {/* Search Bar */}
       <BoxWrapper
         sx={{
           position: "absolute",
-          bottom: { xs: "-13rem", md: "-9rem" }, // Tailwind: -bottom-36 / -bottom-52
+          bottom: { xs: "-13rem", md: "-9rem" }, 
           left: "50%",
           transform: "translateX(-50%)",
           width: "100%",
@@ -247,11 +246,11 @@ const Hero: React.FC = () => {
         <BoxWrapper
           sx={{
             display: "flex",
-            flexDirection: { xs: "column", md: "row" }, // max-[890px]:flex-col
+            flexDirection: { xs: "column", md: "row" },
             alignItems: "center",
-            gap: { xs: 2, md: 4 }, // gap-2 / md:gap-6
-            px: { xs: 2, md: 4 }, // px-6 / md:px-9
-            py: { xs: 2, md: 3 }, // py-4 / md:py-6
+            gap: { xs: 2, md: 4 },
+            px: { xs: 2, md: 4 },
+            py: { xs: 2, md: 3 },
             borderRadius: "40px",
             width: "100%",
             maxWidth: "1650px",
@@ -270,13 +269,13 @@ const Hero: React.FC = () => {
               width: "100%",
             }}
           >
-            <Box sx={{ flex: 1 }}>
+            <Box sx={{ flex: 1, minWidth: 0 }}>
               <TextInput
                 placeholder="Search Services.."
                 InputStartIcon={<SearchIcon sx={{ color: "rgba(0,0,0,0.4)" }} />}
               />
             </Box>
-            <Box sx={{ flex: 1 }}>
+            <Box sx={{ flex: 1, minWidth: 0 }}>
               <SelectInput
                 value={service}
                 onChange={(e) => setService(e.target.value)}
@@ -298,11 +297,9 @@ const Hero: React.FC = () => {
               alignItems: "center",
               gap: { xs: 2, md: 4 },
               width: "100%",
-            
-              flexWrap: { xs: "wrap", md: "nowrap" }, // mobile wraps
             }}
           >
-            <Box sx={{ flex: 1 }}>
+            <Box sx={{ flex: 1, minWidth: 0 }}>
               <SelectInput
                 value={type}
                 onChange={(e) => setType(e.target.value)}
@@ -314,12 +311,10 @@ const Hero: React.FC = () => {
                 ]}
               />
             </Box>
-            <Box
-              
-            >
+            <Box sx={{ flex: 1, minWidth: 0 }}>
               <Button
                 sx={{
-                  width: { xs: "100%", sm: "160px" }, 
+                  width: "100%",
                 }}
               >
                 Search
@@ -328,9 +323,6 @@ const Hero: React.FC = () => {
           </BoxWrapper>
         </BoxWrapper>
       </BoxWrapper>
-
-
-
       </Box>
     </Box>
   );
